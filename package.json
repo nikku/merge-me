@@ -16,7 +16,8 @@
     "start": "probot run ./index.js",
     "lint": "eslint .",
     "test": "mocha test/*",
-    "auto-test": "nodemon --exec nyc --reporter=lcov --reporter=html --reporter=text npm test"
+    "auto-test": "nodemon --exec nyc --reporter=lcov --reporter=html --reporter=text npm test",
+    "now-start": "PRIVATE_KEY=$(echo $PRIVATE_KEY_BASE64 | base64 -d) npm start"
   },
   "dependencies": {
     "probot": "^7.2.0"
