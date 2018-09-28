@@ -1,0 +1,18 @@
+{
+  "sha": "a20cbb044bc1d731dd37d2e3ba2ca0b92d44c03c",
+  "state": "success",
+  "branches": [
+    {
+      "name": "with-pr-protected",
+      "commit": {
+        "sha": "a20cbb044bc1d731dd37d2e3ba2ca0b92d44c03c"
+      }
+    }
+  ],
+  "repository": {
+    "name": "repo",
+    "owner": {
+      "login": "owner"
+    }
+  }
+}

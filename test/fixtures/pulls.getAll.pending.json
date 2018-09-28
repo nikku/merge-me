@@ -1,0 +1,27 @@
+[
+  {
+    "number": 1,
+    "head": {
+      "label": "repo:with-pr-pending",
+      "ref": "with-pr",
+      "sha": "2c354d7b133b81cd284991bb703e7258fcb55094",
+      "repo": {
+        "name": "repo",
+        "owner": {
+          "login": "owner"
+        }
+      }
+    },
+    "base": {
+      "label": "repo:master",
+      "ref": "master",
+      "sha": "f141b8cb95a8a3a25ca4864a628e2b0866df948e",
+      "repo": {
+        "name": "repo",
+        "owner": {
+          "login": "owner"
+        }
+      }
+    }
+  }
+]

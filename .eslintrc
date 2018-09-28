@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "plugin:bpmn-io/es6",
+    "plugin:bpmn-io/mocha"
+  ],
+  "env": {
+    "node": true,
+    "es6": true
+  }
+}
