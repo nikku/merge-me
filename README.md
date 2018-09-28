@@ -6,6 +6,13 @@ A GitHub App built with [Probot](https://probot.github.io) that automatically
 merges your pull requestsonce all required checks pass.
 
 
+## Features
+
+* Zero configuration
+* Merges using the _rebase_ strategy
+* Adheres to configured [branch protection](https://help.github.com/articles/about-protected-branches/) rules
+
+
 ## Setup
 
 ```sh
@@ -15,13 +22,6 @@ npm install
 # run the bot
 npm start
 ```
-
-
-## Configuration
-
-This is a _ZERO_ configuration bot. If you'd like to configure the merge behavior
-configure [branch protection](https://help.github.com/articles/about-protected-branches/)
-and the app will adhere to it.
 
 
 ## License
