@@ -102,14 +102,45 @@ module.exports = app => {
       base
     } = pullRequest;
 
+    context.log.debug(`checking merge on PR #${number}`);
+
     const {
       repo,
       owner
     } = getRepoAndOwner(base.repo);
 
-    const sha = head.sha;
 
-    context.log.debug(`checking merge on PR #${number}`);
+    // this is a PR from outside the organization
+    // ensure that we got no dismissed reviews and at least
+    // a single approved review before we proceed with
+    // auto merging
+    if (getRepoAndOwner(head.repo).owner !== owner) {
+
+      const {
+        data: reviews
+      } = context.github.pullRequests.getReviews({
+        owner,
+        repo,
+        number
+      });
+
+      const approved = reviews.find(function(review) {
+        return review.state === 'APPROVED';
+      });
+
+      const dismissed = reviews.find(function(review) {
+        return review.state === 'DISMISSED';
+      });
+
+      if (dismissed || !approved) {
+        context.log('skipping: dismissed or missing reviews on external PR');
+
+        return;
+      }
+    }
+
+
+    const sha = head.sha;
 
     // https://octokit.github.io/rest.js/#api-Repos-getProtectedBranchRequiredStatusChecks
     const {

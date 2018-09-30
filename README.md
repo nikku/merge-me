@@ -13,6 +13,12 @@ merges your pull requestsonce all required checks pass.
 * Adheres to configured [branch protection](https://help.github.com/articles/about-protected-branches/) rules
 
 
+## Merge Rules
+
+* Respect rules defined via [branch protection](https://help.github.com/articles/about-protected-branches/)
+* Require at least a one approved review before merging PRs from another project
+
+
 ## Setup
 
 ```sh

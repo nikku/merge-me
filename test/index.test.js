@@ -114,6 +114,43 @@ describe('merge-me', () => {
         })
       },
       pullRequests: {
+        getReviews: fake(function({ owner, repo, number }) {
+
+          expect(owner).to.eql('owner');
+          expect(repo).to.eql('repo');
+
+          if (number === 5) {
+            return {
+              data: [
+                {
+                  state: 'APPROVED'
+                }
+              ]
+            };
+          }
+
+          if (number === 6) {
+            return {
+              data: [
+                {
+                  state: 'APPROVED'
+                },
+                {
+                  state: 'DISMISSED'
+                },
+                {
+                  state: 'PENDING'
+                }
+              ]
+            };
+          }
+
+          if (number === 7) {
+            return { data: [] };
+          }
+
+          throw new Error('unexpected PR number');
+        }),
         merge: fake(function({
           number
         }) {
@@ -325,6 +362,30 @@ describe('merge-me', () => {
           'branch status success',
           'merge #405 failed: error'
         ]));
+
+
+        describe('PR from external', function() {
+
+          it('without review', verify('pullRequest.external.noReview', [
+            'checking merge on PR #7',
+            'skipping: dismissed or missing reviews on external PR'
+          ]));
+
+
+          it('dismissed via review', verify('pullRequest.external.dismissed', [
+            'checking merge on PR #6',
+            'skipping: dismissed or missing reviews on external PR'
+          ]));
+
+
+          it('approved by review', verify('pullRequest.external.approved', [
+            'checking merge on PR #5',
+            'validating merge against via all status checks',
+            'branch status success',
+            'merged PR #5'
+          ]));
+
+        });
 
       });
 
