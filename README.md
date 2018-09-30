@@ -15,8 +15,11 @@ merges your pull requestsonce all required checks pass.
 
 ## Merge Rules
 
-* Respect rules defined via [branch protection](https://help.github.com/articles/about-protected-branches/)
-* Require at least a one approved review before merging PRs from another project
+The bot will ensure the following conditions are met before merging:
+
+* No pending status checks
+* Pull request is ready to merge according to [branch protection](https://help.github.com/articles/about-protected-branches/) rules
+* Pull request from fork got reviewed by at least a single review
 
 
 ## Setup
