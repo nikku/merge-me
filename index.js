@@ -116,6 +116,8 @@ module.exports = app => {
     // auto merging
     if (getRepoAndOwner(head.repo).owner !== owner) {
 
+      context.log.debug('external PR, checking if review exists');
+
       const {
         data: reviews
       } = await context.github.pullRequests.getReviews({
@@ -137,6 +139,8 @@ module.exports = app => {
 
         return;
       }
+
+      context.log.debug('external PR, approved via review');
     }
 
 
