@@ -15,7 +15,7 @@ merges your pull requestsonce all required checks pass.
 
 ## Merge Rules
 
-The bot will ensure the following conditions are met before merging:
+The bot ensures the following conditions are met before merging:
 
 * No pending status checks
 * Pull request is ready to merge according to [branch protection](https://help.github.com/articles/about-protected-branches/) rules
