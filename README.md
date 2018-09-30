@@ -6,6 +6,11 @@ A GitHub App built with [Probot](https://probot.github.io) that automatically
 merges your pull requestsonce all required checks pass.
 
 
+## Installation
+
+Consume as [GitHub app](https://github.com/apps/merge-me) or fork and deploy your own instance.
+
+
 ## Features
 
 * Zero configuration
