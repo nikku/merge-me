@@ -368,22 +368,22 @@ describe('merge-me', () => {
 
           it('without review', verify('pullRequest.external.noReview', [
             'checking merge on PR #7',
-            'external PR, checking if review exists',
+            'external PR, checking if review(s) exists',
             'skipping: dismissed or missing reviews on external PR'
           ]));
 
 
           it('dismissed via review', verify('pullRequest.external.dismissed', [
             'checking merge on PR #6',
-            'external PR, checking if review exists',
+            'external PR, checking if review(s) exists',
             'skipping: dismissed or missing reviews on external PR'
           ]));
 
 
           it('approved by review', verify('pullRequest.external.approved', [
             'checking merge on PR #5',
-            'external PR, checking if review exists',
-            'external PR, approved via review',
+            'external PR, checking if review(s) exists',
+            'approved via review(s)',
             'validating merge against via all status checks',
             'branch status success',
             'merged PR #5'
