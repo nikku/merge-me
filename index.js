@@ -126,15 +126,11 @@ module.exports = app => {
         number
       });
 
-      const approved = reviews.find(function(review) {
+      const allApproved = reviews.every(function(review) {
         return review.state === 'APPROVED';
       });
 
-      const dismissed = reviews.find(function(review) {
-        return review.state === 'DISMISSED';
-      });
-
-      if (dismissed || !approved) {
+      if (!reviews.length || !allApproved) {
         context.log('skipping: dismissed or missing reviews on external PR');
 
         return;
