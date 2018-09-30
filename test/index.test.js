@@ -120,17 +120,17 @@ describe('merge-me', () => {
           expect(repo).to.eql('repo');
 
           if (number === 5) {
-            return {
+            return Promise.resolve({
               data: [
                 {
                   state: 'APPROVED'
                 }
               ]
-            };
+            });
           }
 
           if (number === 6) {
-            return {
+            return Promise.resolve({
               data: [
                 {
                   state: 'APPROVED'
@@ -142,11 +142,11 @@ describe('merge-me', () => {
                   state: 'PENDING'
                 }
               ]
-            };
+            });
           }
 
           if (number === 7) {
-            return { data: [] };
+            return Promise.resolve({ data: [] });
           }
 
           throw new Error('unexpected PR number');

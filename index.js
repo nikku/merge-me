@@ -118,7 +118,7 @@ module.exports = app => {
 
       const {
         data: reviews
-      } = context.github.pullRequests.getReviews({
+      } = await context.github.pullRequests.getReviews({
         owner,
         repo,
         number
