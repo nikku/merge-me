@@ -24,5 +24,11 @@
         }
       }
     }
+  },
+  "repository": {
+    "name": "repo",
+    "owner": {
+      "login": "owner"
+    }
   }
 }

@@ -27,16 +27,6 @@ function logPayload(name, content) {
  */
 module.exports = app => {
 
-  function getRepoAndOwner(repository) {
-    const repo = repository.name;
-    const owner = repository.owner.login;
-
-    return {
-      repo,
-      owner
-    };
-  }
-
   async function findPullRequestByStatus(context, status) {
 
     logPayload('status', status);
@@ -47,11 +37,6 @@ module.exports = app => {
       branches,
       state
     } = status;
-
-    const {
-      repo,
-      owner
-    } = getRepoAndOwner(repository);
 
 
     if (state !== 'success') {
@@ -76,11 +61,9 @@ module.exports = app => {
     // https://octokit.github.io/rest.js/#api-PullRequests-getAll
     const {
       data: pullRequests
-    } = await context.github.pullRequests.getAll({
-      owner,
-      repo,
+    } = await context.github.pullRequests.getAll(context.repo({
       ref: `${repository.name}:${branch.name}`
-    });
+    }));
 
     context.log.debug(`found ${pullRequests.length} pulls`);
 
@@ -104,27 +87,20 @@ module.exports = app => {
 
     context.log.debug(`checking merge on PR #${number}`);
 
-    const {
-      repo,
-      owner
-    } = getRepoAndOwner(base.repo);
-
 
     // this is a PR from outside the organization
     // ensure that we got no dismissed reviews and at least
     // a single approved review before we proceed with
     // auto merging
-    if (getRepoAndOwner(head.repo).owner !== owner) {
+    if (isCrossOriginPullRequest(head, base)) {
 
       context.log.debug('external PR, checking if review(s) exists');
 
       const {
         data: reviews
-      } = await context.github.pullRequests.getReviews({
-        owner,
-        repo,
+      } = await context.github.pullRequests.getReviews(context.repo({
         number
-      });
+      }));
 
       const allApproved = reviews.every(function(review) {
         return review.state === 'APPROVED';
@@ -145,11 +121,9 @@ module.exports = app => {
     // https://octokit.github.io/rest.js/#api-Repos-getProtectedBranchRequiredStatusChecks
     const {
       data: requiredStatusChecks
-    } = await context.github.repos.getProtectedBranchRequiredStatusChecksContexts({
-      owner,
-      repo,
+    } = await context.github.repos.getProtectedBranchRequiredStatusChecksContexts(context.repo({
       branch: base.ref
-    });
+    }));
 
     logPayload('repos.branchRestrictions', requiredStatusChecks);
 
@@ -187,11 +161,9 @@ module.exports = app => {
     // https://octokit.github.io/rest.js/#api-Repos-getCombinedStatusForRef
     const {
       data: status
-    } = await context.github.repos.getCombinedStatusForRef({
-      owner,
-      repo,
+    } = await context.github.repos.getCombinedStatusForRef(context.repo({
       ref: sha
-    });
+    }));
 
     context.log.debug(`branch status ${status.state}`);
 
@@ -208,13 +180,11 @@ module.exports = app => {
       // https://octokit.github.io/rest.js/#api-PullRequests-merge
       const {
         data: result
-      } = await context.github.pullRequests.merge({
-        owner,
-        repo,
+      } = await context.github.pullRequests.merge(context.repo({
         number,
         sha,
         merge_method: 'rebase'
-      });
+      }));
 
       context.log.debug(`merged PR #${number}`);
 
@@ -291,3 +261,10 @@ module.exports = app => {
   });
 
 };
+
+
+// helpers ////////////////////////////
+
+function isCrossOriginPullRequest(head, base) {
+  return head.repo.owner.login !== base.repo.owner.login;
+}

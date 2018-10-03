@@ -22,6 +22,12 @@
           "login": "owner"
         }
       }
+    },
+    "repository": {
+      "name": "repo",
+      "owner": {
+        "login": "owner"
+      }
     }
   }
 ]
