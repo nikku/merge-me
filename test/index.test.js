@@ -266,7 +266,7 @@ describe('merge-me', () => {
         'checking branch with-pr',
         'found 1 pulls',
         'checking merge on PR #1',
-        'validating merge against via all status checks',
+        'validating merge against all status checks',
         'branch status success',
         'merged PR #1'
       ]));
@@ -296,7 +296,7 @@ describe('merge-me', () => {
 
       it('approval', verify('pullRequestReview.approval', [
         'checking merge on PR #4',
-        'validating merge against via all status checks',
+        'validating merge against all status checks',
         'branch status success',
         'merged PR #4'
       ]));
@@ -334,7 +334,7 @@ describe('merge-me', () => {
 
         it('with status', verify('pullRequest.synchronize', [
           'checking merge on PR #4',
-          'validating merge against via all status checks',
+          'validating merge against all status checks',
           'branch status success',
           'merged PR #4'
         ]));
@@ -350,7 +350,7 @@ describe('merge-me', () => {
 
         it('merge fail generic', verify('pullRequest.mergeFail', [
           'checking merge on PR #666',
-          'validating merge against via all status checks',
+          'validating merge against all status checks',
           'branch status success',
           'merge failed'
         ]));
@@ -358,7 +358,7 @@ describe('merge-me', () => {
 
         it('merge fail 405', verify('pullRequest.mergeFail.405', [
           'checking merge on PR #405',
-          'validating merge against via all status checks',
+          'validating merge against all status checks',
           'branch status success',
           'merge #405 failed: error'
         ]));
@@ -384,7 +384,7 @@ describe('merge-me', () => {
             'checking merge on PR #5',
             'external PR, checking if review(s) exists',
             'approved via review(s)',
-            'validating merge against via all status checks',
+            'validating merge against all status checks',
             'branch status success',
             'merged PR #5'
           ]));

@@ -130,7 +130,7 @@ module.exports = app => {
     if (requiredStatusChecks.length) {
       context.log.debug('validating merge against branch restrictions');
     } else {
-      context.log.debug('validating merge against via all status checks');
+      context.log.debug('validating merge against all status checks');
     }
 
     const canMerge = requiredStatusChecks.length ? (summary) => {
