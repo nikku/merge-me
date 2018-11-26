@@ -1,11 +1,8 @@
-const logPayload = () => {};
-
-/*
 const fs = require('fs');
 
 const names = {};
 
-function logPayload(name, content) {
+const debugLogPayload = (name, content) => {
 
   const count = names[name] || 0;
 
@@ -16,8 +13,11 @@ function logPayload(name, content) {
   fs.writeFileSync(fileName, JSON.stringify(content, null, '  '), 'utf-8');
 
   names[name] = count + 1;
-}
-*/
+};
+
+const noopLogPayload = () => {};
+
+const logPayload = process.env.DEBUG_LOG_PAYLOAD ? debugLogPayload : noopLogPayload;
 
 
 /**
