@@ -63,10 +63,12 @@ module.exports = app => {
       return true;
     } catch (e) {
 
-      const err = JSON.parse(e.message);
+      if (e.code === 404) {
+        const err = JSON.parse(e.message);
 
-      if (err.message === 'Branch not protected') {
-        return false;
+        if (err.message === 'Branch not protected') {
+          return false;
+        }
       }
 
       throw e;
