@@ -28,6 +28,9 @@ const REVIEWS_MISSING = 'REVIEWS_MISSING';
 const CHANGES_REQUESTED = 'CHANGES_REQUESTED';
 
 const SUCCESS = 'SUCCESS';
+const CHECKS_MISSING = 'CHECKS_MISSING';
+const CHECKS_PENDING = 'CHECKS_PENDING';
+const CHECKS_FAILED = 'CHECKS_FAILED';
 
 /**
  * Main entry point of the <merge-me> probot.
@@ -199,7 +202,62 @@ module.exports = app => {
 
     logPayload(context, 'repos.getCombinedStatusForRef', statusForRef);
 
-    return statusForRef.state.toUpperCase();
+    const {
+      statuses
+    } = statusForRef;
+
+    const statusState = statusForRef.state.toUpperCase();
+
+    // quick reject if there are unsuccessful status checks
+    if (statuses.length && statusState !== SUCCESS) {
+      context.log.debug(`skipping: combined status = ${statusState}`);
+
+      // returns STATUS_FAILED, STATUS_PENDING
+      return `STATUS_${statusState}`;
+    }
+
+    const {
+      data: suitesForRef
+    } = await context.github.checks.listSuitesForRef(context.repo({
+      ref: sha
+    }));
+
+    logPayload(context, 'checks.listSuitesForRef', suitesForRef);
+
+    const {
+      check_suites
+    } = suitesForRef;
+
+    if (check_suites.length === 0) {
+
+      if (statuses.length === 0) {
+        return CHECKS_MISSING;
+      } else {
+        // SUCCESS
+        return statusState;
+      }
+    }
+
+    // at this point, we got at least a single check_suite
+    const checkSuitesStatus = check_suites.reduce(function(result, suite) {
+
+      if (result && result !== SUCCESS) {
+        return result;
+      }
+
+      if (suite.status !== 'completed') {
+        return CHECKS_PENDING;
+      }
+
+      if (suite.conclusion !== 'neutral' && suite.conclusion !== 'success') {
+        return CHECKS_FAILED;
+      }
+
+      return SUCCESS;
+    }, null);
+
+    // returns CHECKS_FAILED || CHECKS_PENDING || SUCCESS
+    return checkSuitesStatus;
   }
 
   /**
@@ -343,6 +401,26 @@ module.exports = app => {
 
   // event registrations ///////////////////////////
 
+  app.on('check_suite.completed', async context => {
+    context.log('event --> check_suite.completed');
+
+    logPayload(context, 'check_suite.completed', context.payload);
+
+    const {
+      check_suite
+    } = context.payload;
+
+    const {
+      pull_requests
+    } = check_suite;
+
+    if (pull_requests.length) {
+
+      // check, whether first PR referenced by suite can be merged
+      return checkMerge(context, pull_requests[0]);
+    }
+  });
+
   app.on('pull_request_review.submitted', async context => {
     context.log('event --> pull_request_review.submitted');
 
@@ -362,7 +440,6 @@ module.exports = app => {
     // check, whether PR can be merged
     return checkMerge(context, pull_request);
   });
-
 
   app.on('pull_request.opened', async context => {
     context.log('event --> pull_request.opened');
