@@ -20,11 +20,19 @@ Consume as [GitHub app](https://github.com/apps/merge-me) or fork and deploy you
 
 ## Merge Rules
 
-The bot ensures the following conditions are met before merging:
+The bot ensures that a pull request meets the following conditions before merging it:
 
-* No pending status checks
-* Pull request is ready to merge according to [branch protection](https://help.github.com/articles/about-protected-branches/) rules
-* Pull request from fork got reviewed by at least a single review
+#### With Branch Protection
+
+* Configured [branch protection](https://help.github.com/articles/about-protected-branches/) rules are met 
+
+#### Without Branch Protection
+
+* There exists _at least one_ status check
+* All status checks are _completed_
+* All status checks got the outcome _successful_ or _neutral_
+* Pull requests got at least a single approved review
+* No reviewer requested changes
 
 
 ## Setup
