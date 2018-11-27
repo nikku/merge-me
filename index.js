@@ -2,13 +2,15 @@ const fs = require('fs');
 
 const names = {};
 
-const debugLogPayload = (name, content) => {
+const debugLogPayload = (context, name, content) => {
 
   const count = names[name] || 0;
 
   const suffix = count ? `_${count}`: '';
 
-  const fileName = `${__dirname}/node_modules/${name}${suffix}.json`;
+  const fileName = `${__dirname}/node_modules/${context.id}-${name}${suffix}.json`;
+
+  context.log.debug(`logging payload to ${fileName}`);
 
   fs.writeFileSync(fileName, JSON.stringify(content, null, '  '), 'utf-8');
 
@@ -19,6 +21,13 @@ const noopLogPayload = () => {};
 
 const logPayload = process.env.DEBUG_LOG_PAYLOAD ? debugLogPayload : noopLogPayload;
 
+const DEFAULT_MIN_APPROVALS = 1;
+
+const APPROVED = 'APPROVED';
+const REVIEWS_MISSING = 'REVIEWS_MISSING';
+const CHANGES_REQUESTED = 'CHANGES_REQUESTED';
+
+const SUCCESS = 'SUCCESS';
 
 /**
  * Main entry point of the <merge-me> probot.
@@ -27,9 +36,44 @@ const logPayload = process.env.DEBUG_LOG_PAYLOAD ? debugLogPayload : noopLogPayl
  */
 module.exports = app => {
 
+  /**
+   * Returns a promise on whether the given branch is protected (or not).
+   *
+   * @param  {Context} context
+   * @param  {Branch} base
+   *
+   * @return {Promise<Boolean>}
+   */
+  async function isBranchProtected(context, base) {
+
+    try {
+      const {
+        data: branchProtection
+      } = await context.github.repos.getBranchProtection(
+        context.repo({
+          branch: base.ref
+        })
+      );
+
+      logPayload(context, 'repos.getBranchProtection', branchProtection);
+
+      return true;
+    } catch (e) {
+
+      const err = JSON.parse(e.message);
+
+      if (err.message === 'Branch not protected') {
+        return false;
+      }
+
+      throw e;
+    }
+
+  }
+
   async function findPullRequestByStatus(context, status) {
 
-    logPayload('status', status);
+    logPayload(context, 'status', status);
 
     const {
       sha,
@@ -58,16 +102,16 @@ module.exports = app => {
     context.log.debug(`checking branch ${branch.name}`);
 
 
-    // https://octokit.github.io/rest.js/#api-PullRequests-getAll
+    // https://octokit.github.io/rest.js/#api-PullRequests-list
     const {
       data: pullRequests
-    } = await context.github.pullRequests.getAll(context.repo({
+    } = await context.github.pullRequests.list(context.repo({
       ref: `${repository.name}:${branch.name}`
     }));
 
     context.log.debug(`found ${pullRequests.length} pulls`);
 
-    logPayload('pulls.getAll', pullRequests);
+    logPayload(context, 'pullRequests.list', pullRequests);
 
     if (!pullRequests.length) {
       context.log('skipping: no PR matches ref');
@@ -77,137 +121,232 @@ module.exports = app => {
     return pullRequests[0];
   }
 
-  async function checkMerge(context, pullRequest) {
+  async function getReviewApproval(context, pullRequest) {
 
     const {
-      number,
-      head,
-      base
+      number
     } = pullRequest;
 
-    context.log.debug(`checking merge on PR #${number}`);
+    const config = await context.config('merge-me.yml', {
+      minApprovals: DEFAULT_MIN_APPROVALS
+    });
 
+    const minApprovals = Math.max(
+      isCrossOriginPullRequest(pullRequest) ? 1 : 0,
+      config.minApprovals
+    );
 
-    // this is a PR from outside the organization
-    // ensure that we got no dismissed reviews and at least
-    // a single approved review before we proceed with
-    // auto merging
-    if (isCrossOriginPullRequest(head, base)) {
+    context.log.debug(`checking if #${number} is approved via reviews`);
 
-      context.log.debug('external PR, checking if review(s) exists');
-
-      const {
-        data: reviews
-      } = await context.github.pullRequests.getReviews(context.repo({
-        number
-      }));
-
-      const allApproved = reviews.every(function(review) {
-        return review.state === 'APPROVED';
-      });
-
-      if (!reviews.length || !allApproved) {
-        context.log('skipping: dismissed or missing reviews on external PR');
-
-        return;
-      }
-
-      context.log.debug('approved via review(s)');
-    }
-
-
-    const sha = head.sha;
-
-    // https://octokit.github.io/rest.js/#api-Repos-getProtectedBranchRequiredStatusChecks
     const {
-      data: requiredStatusChecks
-    } = await context.github.repos.getProtectedBranchRequiredStatusChecksContexts(context.repo({
-      branch: base.ref
+      data: reviews
+    } = await context.github.pullRequests.listReviews(context.repo({
+      number
     }));
 
-    logPayload('repos.branchRestrictions', requiredStatusChecks);
+    logPayload(context, 'pullRequests.listReviews', reviews);
 
-    if (requiredStatusChecks.length) {
-      context.log.debug('validating merge against branch restrictions');
-    } else {
-      context.log.debug('validating merge against all status checks');
+    const allApproved = reviews.filter(review => review.state === APPROVED);
+    const allRejected = reviews.filter(review => review.state === CHANGES_REQUESTED);
+
+    if (allApproved.length < minApprovals) {
+      context.log.debug(`skipping: #${number} lacks minApprovals=${minApprovals}`);
+
+      return REVIEWS_MISSING;
     }
 
-    const canMerge = requiredStatusChecks.length ? (summary) => {
+    if (allRejected > 0) {
+      context.log.debug(`skipping: #${number} reviews request changes`);
 
-      return summary.state === 'success' || summary.statuses.every(function(status) {
+      return CHANGES_REQUESTED;
+    }
 
-        const {
-          state,
-          context
-        } = status;
+    context.log.debug(`#${number} approved via review(s)`);
 
-        // wait for all checks to complete
-        if (state === 'pending') {
-          return false;
-        }
+    return APPROVED;
+  }
 
-        const isRequired = requiredStatusChecks.some((ctx) => {
-          return context === ctx || context.startsWith(`${ctx}/`);
-        });
+  /**
+   * Return the combined status of the given PR.
+   *
+   * @param {Context} context
+   * @param {PullRequest} pullRequest
+   *
+   * @return {Promise<String>}
+   */
+  async function getCombinedStatus(context, pullRequest) {
 
-        return !isRequired || state === 'success';
-      });
-    } : (summary) => {
-      return summary.state === 'success';
-    };
+    // we only return SUCCESS if
+    //
+    // (1) there exist status or checks
+    // (2) status and checks all succeed
+    //
 
+    const {
+      head
+    } = pullRequest;
+
+    const {
+      sha
+    } = head;
 
     // https://octokit.github.io/rest.js/#api-Repos-getCombinedStatusForRef
     const {
-      data: status
+      data: statusForRef
     } = await context.github.repos.getCombinedStatusForRef(context.repo({
       ref: sha
     }));
 
-    context.log.debug(`branch status ${status.state}`);
+    logPayload(context, 'repos.getCombinedStatusForRef', statusForRef);
 
-    logPayload('repos.combinedStatus', status);
+    return statusForRef.state.toUpperCase();
+  }
 
-    if (!canMerge(status)) {
-      context.log('skipping: ref merge rejected via status check');
+  /**
+   * Check whether the pull request can be merged.
+   *
+   * @param {Context} context
+   * @param {PullRequest} pullRequest
+   *
+   * @return {Promise<String>}
+   */
+  async function canMerge(context, pullRequest) {
 
-      return;
+    const {
+      number,
+      base
+    } = pullRequest;
+
+    // we always attempt to merge if a branch is protected;
+    // GitHub enforces the protection and our merge will fail
+    if (await isBranchProtected(context, base)) {
+      context.log.debug('branch is protected, skipping merge check');
+
+      return true;
     }
 
+    // in the case where branch protection is disabled
+    // we will enforce the following rules:
+    //
+    // (1) ensure all statuses and checks are completed
+    //     with result SUCCESS or NEUTRAL
+    // (2) ensure there is a configured minimum amount of
+    //     reviews: minimum one for external PRs and a
+    //     configurable minimum of reviews for
+
+    context.log.debug(`check #${number} status and reviews`);
+
+    // (1) verify checks + status //////////
+
+    const statusApproval = await getCombinedStatus(context, pullRequest);
+
+    if (statusApproval !== SUCCESS) {
+      context.log(`skipping: #${number} failed status check (${statusApproval})`);
+
+      return false;
+    }
+
+    // (2) verify reviews ////////////
+
+    const reviewApproval = await getReviewApproval(context, pullRequest);
+
+    if (reviewApproval !== APPROVED) {
+      context.log(`skipping: #${number} failed review check (${reviewApproval})`);
+
+      return false;
+    }
+
+    context.log.debug('PR check passed');
+
+    return true;
+  }
+
+  /**
+   * Attempt to merge the given PR.
+   *
+   * @param {Context} context
+   * @param {PullRequest} pullRequest
+   *
+   * @return {Promise<Boolean>} success
+   */
+  async function merge(context, pullRequest) {
+
+    const {
+      number,
+      head
+    } = pullRequest;
+
+    const {
+      sha
+    } = head;
+
+    context.log.debug(`attempting to merge #${number}`);
 
     try {
       // https://octokit.github.io/rest.js/#api-PullRequests-merge
       const {
-        data: result
+        data: mergeResult
       } = await context.github.pullRequests.merge(context.repo({
         number,
         sha,
         merge_method: 'rebase'
       }));
 
-      context.log.debug(`merged PR #${number}`);
+      logPayload(context, 'pullRequests.merge', mergeResult);
 
-      logPayload('pulls.merge', result);
+      return true;
     } catch (e) {
-      logPayload('pulls.mergeFail', e);
+      logPayload(context, 'pullRequests.merge_fail', e);
 
       if (e.code === 405) {
         const err = JSON.parse(e.message);
 
         // TODO(nikku): print CANNOT AUTOMATICALLY MERGE to user (?)
-        context.log(`merge #${number} failed: ${err.message}`);
-
-        return;
+        context.log.debug(`merge #${number} failed: ${err.message}`);
+      } else {
+        context.log.error('merge failed', e);
       }
 
-      context.log.error('merge failed', e);
+      return false;
+    }
+  }
+
+  async function checkMerge(context, pullRequest) {
+
+    const {
+      number
+    } = pullRequest;
+
+    context.log(`checking merge of #${number}`);
+
+    const shouldMerge = await canMerge(context, pullRequest);
+
+    if (!shouldMerge) {
+      context.log(`skipping: merge of #${number} rejected via status check`);
+
+      return false;
+    }
+
+    const merged = await merge(context, pullRequest);
+
+    if (merged) {
+      context.log(`merged #${number}`);
+
+      return true;
+    } else {
+      context.log(`skipping: failed to merge #${number}`);
+
+      return false;
     }
   }
 
 
+  // event registrations ///////////////////////////
+
   app.on('pull_request_review.submitted', async context => {
-    logPayload('pullRequestReview.submitted', context.payload);
+    context.log('event --> pull_request_review.submitted');
+
+    logPayload(context, 'pull_request_review.submitted', context.payload);
 
     const {
       review,
@@ -226,30 +365,37 @@ module.exports = app => {
 
 
   app.on('pull_request.opened', async context => {
-    logPayload('pullRequest.opened', context.payload);
+    context.log('event --> pull_request.opened');
+
+    logPayload(context, 'pull_request.opened', context.payload);
 
     // check, whether PR can be merged
     return checkMerge(context, context.payload.pull_request);
   });
-
 
   app.on('pull_request.reopened', async context => {
-    logPayload('pullRequest.reopened', context.payload);
+    context.log('event --> pull_request.reopened');
+
+    logPayload(context, 'pull_request.reopened', context.payload);
 
     // check, whether PR can be merged
     return checkMerge(context, context.payload.pull_request);
   });
-
 
   app.on('pull_request.synchronize', async context => {
-    logPayload('pullRequest.synchronize', context.payload);
+    context.log('event --> pull_request.synchronize');
+
+    logPayload(context, 'pull_request.synchronize', context.payload);
 
     // check, whether PR can be merged
     return checkMerge(context, context.payload.pull_request);
   });
 
-
   app.on('status', async context => {
+    context.log('event --> pull_request.status');
+
+    logPayload(context, 'status', context.payload);
+
     const pullRequest = await findPullRequestByStatus(context, context.payload);
 
     if (!pullRequest) {
@@ -265,6 +411,12 @@ module.exports = app => {
 
 // helpers ////////////////////////////
 
-function isCrossOriginPullRequest(head, base) {
-  return head.repo.owner.login !== base.repo.owner.login;
+function isCrossOriginPullRequest(pullRequest) {
+
+  const {
+    head,
+    base
+  } = pullRequest;
+
+  return head.repo.id !== base.repo.id;
 }
