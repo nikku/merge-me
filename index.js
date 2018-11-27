@@ -402,8 +402,6 @@ module.exports = app => {
   // event registrations ///////////////////////////
 
   app.on('check_suite.completed', async context => {
-    context.log('event --> check_suite.completed');
-
     logPayload(context, 'check_suite.completed', context.payload);
 
     const {
@@ -422,10 +420,6 @@ module.exports = app => {
   });
 
   app.on('pull_request_review.submitted', async context => {
-    context.log('event --> pull_request_review.submitted');
-
-    logPayload(context, 'pull_request_review.submitted', context.payload);
-
     const {
       review,
       pull_request
@@ -441,38 +435,16 @@ module.exports = app => {
     return checkMerge(context, pull_request);
   });
 
-  app.on('pull_request.opened', async context => {
-    context.log('event --> pull_request.opened');
-
-    logPayload(context, 'pull_request.opened', context.payload);
-
-    // check, whether PR can be merged
-    return checkMerge(context, context.payload.pull_request);
-  });
-
-  app.on('pull_request.reopened', async context => {
-    context.log('event --> pull_request.reopened');
-
-    logPayload(context, 'pull_request.reopened', context.payload);
-
-    // check, whether PR can be merged
-    return checkMerge(context, context.payload.pull_request);
-  });
-
-  app.on('pull_request.synchronize', async context => {
-    context.log('event --> pull_request.synchronize');
-
-    logPayload(context, 'pull_request.synchronize', context.payload);
-
+  app.on([
+    'pull_request.opened',
+    'pull_request.reopened',
+    'pull_request.synchronize'
+  ], async context => {
     // check, whether PR can be merged
     return checkMerge(context, context.payload.pull_request);
   });
 
   app.on('status', async context => {
-    context.log('event --> pull_request.status');
-
-    logPayload(context, 'status', context.payload);
-
     const pullRequest = await findPullRequestByStatus(context, context.payload);
 
     if (!pullRequest) {
@@ -481,6 +453,10 @@ module.exports = app => {
 
     // check, whether PR can be merged
     return checkMerge(context, pullRequest);
+  });
+
+  app.on('*', async context => {
+    logPayload(context, context.event, context.payload);
   });
 
 };
