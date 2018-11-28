@@ -1,6 +1,7 @@
 # merge-me
 
 [![Build Status](https://travis-ci.com/nikku/merge-me.svg?branch=master)](https://travis-ci.com/nikku/merge-me)
+[![codecov](https://codecov.io/gh/nikku/merge-me/branch/master/graph/badge.svg)](https://codecov.io/gh/nikku/merge-me)
 
 A GitHub App built with [Probot](https://probot.github.io) that automatically
 merges your pull requests once all required checks pass.
@@ -24,7 +25,7 @@ The bot ensures that a pull request meets the following conditions before mergin
 
 #### With Branch Protection
 
-* Configured [branch protection](https://help.github.com/articles/about-protected-branches/) rules are met 
+* Configured [branch protection](https://help.github.com/articles/about-protected-branches/) rules are met
 
 #### Without Branch Protection
 
