@@ -1,0 +1,98 @@
+{
+  "name": "pull_request.opened",
+  "type": "event",
+  "payload": {
+    "action": "opened",
+    "number": 23,
+    "pull_request": {
+      "number": 23,
+      "state": "open",
+      "title": "Update test.txt",
+      "user": {
+        "login": "waltaaa",
+        "type": "User"
+      },
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [],
+      "head": {
+        "label": "nikku:waltaaa-patch-1",
+        "ref": "waltaaa-patch-1",
+        "sha": "329dc8801f6da722d6ac9420e142f59aa610916f",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 13,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 1,
+          "open_issues_count": 1,
+          "forks": 1,
+          "open_issues": 1,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "nikku:master",
+        "ref": "master",
+        "sha": "15966515740adcdc8999d1c98a7ead8136cb55a7",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 13,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 1,
+          "open_issues_count": 1,
+          "forks": 1,
+          "open_issues": 1,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "COLLABORATOR",
+      "mergeable_state": "unknown",
+      "comments": 0,
+      "review_comments": 0,
+      "commits": 1,
+      "additions": 1,
+      "deletions": 1,
+      "changed_files": 1
+    },
+    "repository": {
+      "name": "testtest",
+      "full_name": "nikku/testtest",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 13,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 1,
+      "open_issues_count": 1,
+      "forks": 1,
+      "open_issues": 1,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}

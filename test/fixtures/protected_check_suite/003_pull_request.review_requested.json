@@ -1,0 +1,108 @@
+{
+  "name": "pull_request.review_requested",
+  "type": "event",
+  "payload": {
+    "action": "review_requested",
+    "number": 24,
+    "pull_request": {
+      "number": 24,
+      "state": "open",
+      "title": "Update test.txt",
+      "user": {
+        "login": "waltaaa",
+        "type": "User"
+      },
+      "merge_commit_sha": "6681fc9fdc1914e3490e1d1be48cc0760c4cf3ed",
+      "assignees": [],
+      "requested_reviewers": [
+        {
+          "login": "nikku",
+          "type": "User"
+        }
+      ],
+      "requested_teams": [],
+      "labels": [],
+      "head": {
+        "label": "nikku:waltaaa-patch-1",
+        "ref": "waltaaa-patch-1",
+        "sha": "4b10a44fa7652f05c61bd18f7e5a7c7e451e093f",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 12,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 1,
+          "open_issues_count": 1,
+          "forks": 1,
+          "open_issues": 1,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "nikku:master",
+        "ref": "master",
+        "sha": "4f7b58a550a45d7a807f2cb0095946b03dc3d3f7",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 12,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 1,
+          "open_issues_count": 1,
+          "forks": 1,
+          "open_issues": 1,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "COLLABORATOR",
+      "mergeable_state": "unstable",
+      "comments": 0,
+      "review_comments": 0,
+      "commits": 1,
+      "additions": 1,
+      "deletions": 0,
+      "changed_files": 1
+    },
+    "requested_reviewer": {
+      "login": "nikku",
+      "type": "User"
+    },
+    "repository": {
+      "name": "testtest",
+      "full_name": "nikku/testtest",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 12,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 1,
+      "open_issues_count": 1,
+      "forks": 1,
+      "open_issues": 1,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}

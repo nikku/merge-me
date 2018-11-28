@@ -1,0 +1,103 @@
+{
+  "name": "pull_request.closed",
+  "type": "event",
+  "payload": {
+    "action": "closed",
+    "number": 24,
+    "pull_request": {
+      "number": 24,
+      "state": "closed",
+      "title": "Update test.txt",
+      "user": {
+        "login": "waltaaa",
+        "type": "User"
+      },
+      "merge_commit_sha": "555a9a96c5474b3f779a3799d9652b4b636d7210",
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [],
+      "head": {
+        "label": "nikku:waltaaa-patch-1",
+        "ref": "waltaaa-patch-1",
+        "sha": "4b10a44fa7652f05c61bd18f7e5a7c7e451e093f",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 12,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 1,
+          "open_issues_count": 0,
+          "forks": 1,
+          "open_issues": 0,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "nikku:master",
+        "ref": "master",
+        "sha": "4f7b58a550a45d7a807f2cb0095946b03dc3d3f7",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 12,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 1,
+          "open_issues_count": 0,
+          "forks": 1,
+          "open_issues": 0,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "COLLABORATOR",
+      "mergeable_state": "unknown",
+      "merged_by": {
+        "login": "merge-me-test[bot]",
+        "type": "Bot"
+      },
+      "comments": 0,
+      "review_comments": 0,
+      "commits": 1,
+      "additions": 1,
+      "deletions": 0,
+      "changed_files": 1
+    },
+    "repository": {
+      "name": "testtest",
+      "full_name": "nikku/testtest",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 12,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 1,
+      "open_issues_count": 0,
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}

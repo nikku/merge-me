@@ -15,8 +15,8 @@
     "dev": "nodemon",
     "start": "probot run ./index.js",
     "lint": "eslint .",
-    "test": "mocha test/*",
-    "auto-test": "nodemon --exec nyc --reporter=lcov --reporter=html --reporter=text npm test"
+    "test": "nyc -x=lib/recorder.js -x=test/recording.js --reporter=lcov --reporter=html --reporter=text mocha test/*",
+    "auto-test": "nodemon --exec npm test"
   },
   "dependencies": {
     "probot": "^7.2.0"
@@ -29,8 +29,6 @@
     "nodemon": "^1.17.2",
     "npm-run-all": "^4.1.3",
     "nyc": "^13.0.1",
-    "sinon": "^6.3.4",
-    "sinon-chai": "^3.2.0",
     "smee-client": "^1.0.2"
   },
   "engines": {

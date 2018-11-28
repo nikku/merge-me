@@ -1,0 +1,16 @@
+{
+  "name": "repos.getBranchProtection",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "branch": "master"
+  },
+  "result": {
+    "error": {
+      "code": 500,
+      "status": "Internal Server Error",
+      "message": "{\"message\":\"Ooops, this should not have happened\"}"
+    }
+  }
+}

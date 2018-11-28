@@ -1,0 +1,17 @@
+{
+  "name": "pullRequests.merge",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "number": 24,
+    "sha": "4b10a44fa7652f05c61bd18f7e5a7c7e451e093f",
+    "merge_method": "rebase"
+  },
+  "result": {
+    "data": {
+      "sha": "555a9a96c5474b3f779a3799d9652b4b636d7210",
+      "message": "Pull Request successfully merged"
+    }
+  }
+}

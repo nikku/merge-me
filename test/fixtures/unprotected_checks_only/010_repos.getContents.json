@@ -1,0 +1,16 @@
+{
+  "name": "repos.getContents",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest-checks",
+    "path": ".github/merge-me.yml"
+  },
+  "result": {
+    "error": {
+      "code": 404,
+      "status": "Not Found",
+      "message": "{\"message\":\"Not Found\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/#get-contents\"}"
+    }
+  }
+}

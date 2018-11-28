@@ -1,0 +1,81 @@
+{
+  "name": "pullRequests.list",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "ref": "testtest:waltaaa-patch-1",
+    "state": "open"
+  },
+  "result": {
+    "data": [
+      {
+        "number": 23,
+        "state": "open",
+        "title": "Update test.txt",
+        "user": {
+          "login": "waltaaa",
+          "type": "User"
+        },
+        "merge_commit_sha": "6de9a830f0710f1bdf62517d55772b8d93d6e91b",
+        "assignees": [],
+        "requested_reviewers": [],
+        "requested_teams": [],
+        "labels": [],
+        "head": {
+          "label": "nikku:waltaaa-patch-1",
+          "ref": "waltaaa-patch-1",
+          "sha": "329dc8801f6da722d6ac9420e142f59aa610916f",
+          "user": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "repo": {
+            "name": "testtest",
+            "full_name": "nikku/testtest",
+            "owner": {
+              "login": "nikku",
+              "type": "User"
+            },
+            "size": 13,
+            "stargazers_count": 0,
+            "watchers_count": 0,
+            "forks_count": 1,
+            "open_issues_count": 1,
+            "forks": 1,
+            "open_issues": 1,
+            "watchers": 0,
+            "default_branch": "master"
+          }
+        },
+        "base": {
+          "label": "nikku:master",
+          "ref": "master",
+          "sha": "15966515740adcdc8999d1c98a7ead8136cb55a7",
+          "user": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "repo": {
+            "name": "testtest",
+            "full_name": "nikku/testtest",
+            "owner": {
+              "login": "nikku",
+              "type": "User"
+            },
+            "size": 13,
+            "stargazers_count": 0,
+            "watchers_count": 0,
+            "forks_count": 1,
+            "open_issues_count": 1,
+            "forks": 1,
+            "open_issues": 1,
+            "watchers": 0,
+            "default_branch": "master"
+          }
+        },
+        "author_association": "COLLABORATOR"
+      }
+    ]
+  }
+}

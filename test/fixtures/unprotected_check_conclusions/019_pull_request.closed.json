@@ -1,0 +1,103 @@
+{
+  "name": "pull_request.closed",
+  "type": "event",
+  "payload": {
+    "action": "closed",
+    "number": 1,
+    "pull_request": {
+      "number": 1,
+      "state": "closed",
+      "title": "Update test.txt",
+      "user": {
+        "login": "waltaaa",
+        "type": "User"
+      },
+      "merge_commit_sha": "18bf62ff9ce3b89190dd4b15ddcfcd77dd4b4fef",
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [],
+      "head": {
+        "label": "nikku:waltaaa-patch-1",
+        "ref": "waltaaa-patch-1",
+        "sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest-checks",
+          "full_name": "nikku/testtest-checks",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 0,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 0,
+          "open_issues_count": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "nikku:master",
+        "ref": "master",
+        "sha": "ee640dc5872b064a1b48c24f823099fe6882d69e",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest-checks",
+          "full_name": "nikku/testtest-checks",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 0,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 0,
+          "open_issues_count": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "COLLABORATOR",
+      "mergeable_state": "unknown",
+      "merged_by": {
+        "login": "merge-me-test[bot]",
+        "type": "Bot"
+      },
+      "comments": 0,
+      "review_comments": 0,
+      "commits": 2,
+      "additions": 2,
+      "deletions": 0,
+      "changed_files": 1
+    },
+    "repository": {
+      "name": "testtest-checks",
+      "full_name": "nikku/testtest-checks",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 0,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 0,
+      "open_issues_count": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}

@@ -1,398 +1,120 @@
-const { Application } = require('probot');
-
-const mergeMe = require('..');
-
-const { expect } = require('chai');
-
-const { fake } = require('sinon');
+const {
+  loadRecording
+} = require('./recording');
 
 
-function fixture(name) {
-  return require(`./fixtures/${name}`);
-}
+describe('bot', function() {
+
+  describe('with branch protection', function() {
+
+    it('should support basic flow', async function() {
+
+      // given
+      const recording = loadRecording('protected');
+
+      // then
+      await recording.replay();
+    });
 
 
-describe('merge-me', () => {
+    it('should handle <check_suite.completed> events', async function() {
 
-  let app, github, trace;
+      // given
+      const recording = loadRecording('protected_check_suite');
 
-  beforeEach(() => {
-    trace = [];
+      // then
+      await recording.replay();
+    });
 
-    app = new Application();
-
-    app.log = (msg) => {
-
-      if (typeof msg === 'string' && msg.indexOf('`context.github`') === 0) {
-        return;
-      }
-
-      trace.push(msg);
-    };
-
-    app.log.child = () => app.log;
-
-    app.log.error = app.log.debug = app.log;
-
-    app.load(mergeMe);
-
-    // mock GitHub API
-    github = {
-      repos: {
-        getCombinedStatusForRef: fake(function({ owner, repo, ref }) {
-          expect(owner).to.eql('owner');
-          expect(repo).to.eql('repo');
-
-          if (ref === 'pending') {
-            return Promise.resolve({
-              data: {
-                state: 'pending'
-              }
-            });
-          }
-
-          if (ref === 'success') {
-            return Promise.resolve({
-              data: {
-                state: 'success'
-              }
-            });
-          }
-
-          if (ref === 'pending-required-complete') {
-            return Promise.resolve({
-              data: {
-                state: 'pending',
-                statuses: [
-                  { context: 'foo', state: 'success' },
-                  { context: 'bar/a', state: 'success' },
-                  { context: 'other', state: 'pending' }
-                ]
-              }
-            });
-          }
-
-          if (ref === 'failed-required-complete') {
-            return Promise.resolve({
-              data: {
-                state: 'failed',
-                statuses: [
-                  { context: 'foo', state: 'success' },
-                  { context: 'bar/a', state: 'success' },
-                  { context: 'other', state: 'failed' }
-                ]
-              }
-            });
-          }
-
-          throw new Error(`unexpected invocation ${[ owner, repo, ref ]}`);
-        }),
-        getProtectedBranchRequiredStatusChecksContexts: fake(function({
-          owner,
-          repo,
-          branch
-        }) {
-          expect(owner).to.eql('owner');
-          expect(repo).to.eql('repo');
-
-          if (branch === 'master') {
-            return Promise.resolve({
-              data: []
-            });
-          }
-
-          if (branch === 'master-protected') {
-            return Promise.resolve({
-              data: [
-                'foo',
-                'bar'
-              ]
-            });
-          }
-
-          throw new Error(`unexpected invocation ${[ owner, repo, branch ]}`);
-        })
-      },
-      pullRequests: {
-        getReviews: fake(function({ owner, repo, number }) {
-
-          expect(owner).to.eql('owner');
-          expect(repo).to.eql('repo');
-
-          if (number === 5) {
-            return Promise.resolve({
-              data: [
-                {
-                  state: 'APPROVED'
-                }
-              ]
-            });
-          }
-
-          if (number === 6) {
-            return Promise.resolve({
-              data: [
-                {
-                  state: 'APPROVED'
-                },
-                {
-                  state: 'DISMISSED'
-                },
-                {
-                  state: 'PENDING'
-                }
-              ]
-            });
-          }
-
-          if (number === 7) {
-            return Promise.resolve({ data: [] });
-          }
-
-          throw new Error('unexpected PR number');
-        }),
-        merge: fake(function({
-          number
-        }) {
-
-          if (number === 666) {
-            return Promise.reject({
-              code: 1,
-              message: JSON.stringify({ message: 'error' })
-            });
-          }
-
-          if (number === 405) {
-            return Promise.reject({
-              code: 405,
-              message: JSON.stringify({ message: 'error' })
-            });
-          }
-
-          return Promise.resolve({
-            data: {
-              merged: true
-            }
-          });
-        }),
-        getAll: fake(function({
-          owner,
-          repo,
-          ref
-        }) {
-
-          expect(owner).to.eql('owner');
-
-          if (ref === 'repo:with-pr') {
-            return Promise.resolve({
-              data: fixture('pulls.getAll')
-            });
-          }
-
-          if (ref === 'repo:with-pr-protected') {
-            return Promise.resolve({
-              data: fixture('pulls.getAll.protected')
-            });
-          }
-
-          if (ref === 'repo:with-pr-pending') {
-            return Promise.resolve({
-              data: fixture('pulls.getAll.pending')
-            });
-          }
-
-          return Promise.resolve({
-            data: []
-          });
-        })
-      }
-    };
-
-    app.auth = () => Promise.resolve(github);
   });
 
 
-  describe('should integrate with hooks', function() {
+  describe('without branch protection', function() {
 
-    describe('status', function() {
+    it('should merge with status', async function() {
 
-      function verify(payloadName, expectedTrace) {
+      // given
+      const recording = loadRecording('unprotected_status_only');
 
-        return async () => {
-          // given
-          const payload = fixture(payloadName);
-
-          // when
-          await app.receive({
-            name: 'status',
-            payload
-          });
-
-          // then
-          expect(trace).to.eql(expectedTrace);
-        };
-
-      }
-
-
-      it('check pending', verify('status.pending', [
-        'skipping: status == pending'
-      ]));
-
-
-      it('check without branch', verify('status.noBranch', [
-        'skipping: no branch matches ref'
-      ]));
-
-
-      it('check without PR', verify('status.noPullRequest', [
-        'checking branch master',
-        'found 0 pulls',
-        'skipping: no PR matches ref',
-      ]));
-
-
-      it('check protected with PR', verify('status.protected', [
-        'checking branch with-pr-protected',
-        'found 1 pulls',
-        'checking merge on PR #1',
-        'validating merge against branch restrictions',
-        'branch status failed',
-        'merged PR #1'
-      ]));
-
-
-      it('check unprotected with PR', verify('status', [
-        'checking branch with-pr',
-        'found 1 pulls',
-        'checking merge on PR #1',
-        'validating merge against all status checks',
-        'branch status success',
-        'merged PR #1'
-      ]));
-
+      // then
+      await recording.replay();
     });
 
 
-    describe('pull_request_review.submitted', function() {
+    it('should merge with checks', async function() {
 
-      function verify(payloadName, expectedTrace) {
+      // given
+      const recording = loadRecording('unprotected_checks_only');
 
-        return async () => {
-          // given
-          const payload = fixture(payloadName);
-
-          // when
-          await app.receive({
-            name: 'pull_request_review.submitted',
-            payload
-          });
-
-          // then
-          expect(trace).to.eql(expectedTrace);
-        };
-
-      }
-
-      it('approval', verify('pullRequestReview.approval', [
-        'checking merge on PR #4',
-        'validating merge against all status checks',
-        'branch status success',
-        'merged PR #4'
-      ]));
-
-
-      it('comment', verify('pullRequestReview.comment', [
-        'skipping: review in state comment'
-      ]));
-
+      // then
+      await recording.replay();
     });
 
 
-    [ 'opened', 'reopened', 'synchronize' ].forEach(function(action) {
+    it('should handle check conclusions', async function() {
 
-      describe(`pull_request.${action}`, function() {
+      // given
+      const recording = loadRecording('unprotected_check_conclusions');
 
-        function verify(payloadName, expectedTrace) {
-
-          return async () => {
-            // given
-            const payload = fixture(payloadName);
-
-            // when
-            await app.receive({
-              name: `pull_request.${action}`,
-              payload
-            });
-
-            // then
-            expect(trace).to.eql(expectedTrace);
-          };
-
-        }
+      // then
+      await recording.replay();
+    });
 
 
-        it('with status', verify('pullRequest.synchronize', [
-          'checking merge on PR #4',
-          'validating merge against all status checks',
-          'branch status success',
-          'merged PR #4'
-        ]));
+    it('should handle missing branch', async function() {
+
+      // given
+      const recording = loadRecording('no_branch');
+
+      // then
+      await recording.replay();
+    });
 
 
-        it('pending statues', verify('pullRequest.pending', [
-          'checking merge on PR #4',
-          'validating merge against branch restrictions',
-          'branch status pending',
-          'skipping: ref merge rejected via status check'
-        ]));
+    it('should not merge with rejected reviews', async function() {
+
+      // given
+      const recording = loadRecording('unprotected_rejected_reviews');
+
+      // then
+      await recording.replay();
+    });
 
 
-        it('merge fail generic', verify('pullRequest.mergeFail', [
-          'checking merge on PR #666',
-          'validating merge against all status checks',
-          'branch status success',
-          'merge failed'
-        ]));
+    it('should handle missing status and checks', async function() {
+
+      // given
+      const recording = loadRecording('unprotected_no_status_checks');
+
+      // then
+      await recording.replay();
+    });
 
 
-        it('merge fail 405', verify('pullRequest.mergeFail.405', [
-          'checking merge on PR #405',
-          'validating merge against all status checks',
-          'branch status success',
-          'merge #405 failed: error'
-        ]));
+    it('should handle status = failed', async function() {
+
+      // given
+      const recording = loadRecording('unprotected_status_failed');
+
+      // then
+      await recording.replay();
+    });
+
+  });
 
 
-        describe('PR from external', function() {
+  describe('error handling', function() {
 
-          it('without review', verify('pullRequest.external.noReview', [
-            'checking merge on PR #7',
-            'external PR, checking if review(s) exists',
-            'skipping: dismissed or missing reviews on external PR'
-          ]));
+    it('should handle unexpected response errors', async function() {
 
+      // given
+      const recording = loadRecording('response_errors');
 
-          it('dismissed via review', verify('pullRequest.external.dismissed', [
-            'checking merge on PR #6',
-            'external PR, checking if review(s) exists',
-            'skipping: dismissed or missing reviews on external PR'
-          ]));
+      // error during getBranchProtection check
+      // error during merge
 
-
-          it('approved by review', verify('pullRequest.external.approved', [
-            'checking merge on PR #5',
-            'external PR, checking if review(s) exists',
-            'approved via review(s)',
-            'validating merge against all status checks',
-            'branch status success',
-            'merged PR #5'
-          ]));
-
-        });
-
-      });
-
+      // then
+      await recording.replay();
     });
 
   });
