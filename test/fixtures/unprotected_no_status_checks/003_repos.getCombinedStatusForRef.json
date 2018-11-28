@@ -1,0 +1,17 @@
+{
+  "name": "repos.getCombinedStatusForRef",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest-checks",
+    "ref": "ca7142df376bebb6edcc0c156ca6897d39f468e2"
+  },
+  "result": {
+    "data": {
+      "state": "pending",
+      "statuses": [],
+      "sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+      "total_count": 0
+    }
+  }
+}

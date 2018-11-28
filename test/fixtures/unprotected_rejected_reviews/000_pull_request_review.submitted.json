@@ -1,0 +1,64 @@
+{
+  "name": "pull_request_review.submitted",
+  "type": "event",
+  "payload": {
+    "action": "submitted",
+    "review": {
+      "user": {
+        "login": "waltaaa"
+      },
+      "commit_id": "53e4600f2c01d18a8005f0f3e857c701fed8a9e0",
+      "state": "approved",
+      "author_association": "COLLABORATOR"
+    },
+    "pull_request": {
+      "number": 29,
+      "state": "open",
+      "title": "Update test.txt",
+      "user": {
+        "login": "nikku"
+      },
+      "merge_commit_sha": "2c249293b68269d009b489c978653101d055301e",
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [],
+      "head": {
+        "label": "nikku:nikku-patch-1",
+        "ref": "nikku-patch-1",
+        "sha": "53e4600f2c01d18a8005f0f3e857c701fed8a9e0",
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest"
+        }
+      },
+      "base": {
+        "label": "nikku:master",
+        "ref": "master",
+        "sha": "c5de67566cca3f699aab82e92dc930d964587f2a",
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest"
+        }
+      },
+      "author_association": "OWNER"
+    },
+    "repository": {
+      "name": "testtest",
+      "full_name": "nikku/testtest",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 14,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 1,
+      "open_issues_count": 1,
+      "forks": 1,
+      "open_issues": 1,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "repos.getBranchProtection",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "branch": "master"
+  },
+  "result": {
+    "error": {
+      "code": 404,
+      "status": "Not Found",
+      "message": "{\"message\":\"Branch not protected\",\"documentation_url\":\"https://developer.github.com/v3/repos/branches/#get-branch-protection\"}"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "repos.getBranchProtection",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "branch": "master"
+  },
+  "result": {
+    "data": {
+      "required_status_checks": {
+        "contexts": [
+          "Travis CI - Pull Request"
+        ]
+      },
+      "required_pull_request_reviews": {},
+      "enforce_admins": {}
+    }
+  }
+}

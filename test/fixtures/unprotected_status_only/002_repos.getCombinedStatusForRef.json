@@ -1,0 +1,30 @@
+{
+  "name": "repos.getCombinedStatusForRef",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "ref": "53e4600f2c01d18a8005f0f3e857c701fed8a9e0"
+  },
+  "result": {
+    "data": {
+      "state": "pending",
+      "statuses": [
+        {
+          "state": "pending",
+          "context": "continuous-integration/travis-ci/push"
+        }
+      ],
+      "sha": "53e4600f2c01d18a8005f0f3e857c701fed8a9e0",
+      "total_count": 1,
+      "repository": {
+        "name": "testtest",
+        "full_name": "nikku/testtest",
+        "owner": {
+          "login": "nikku",
+          "type": "User"
+        }
+      }
+    }
+  }
+}

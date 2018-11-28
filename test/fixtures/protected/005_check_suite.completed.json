@@ -1,0 +1,52 @@
+{
+  "name": "check_suite.completed",
+  "type": "event",
+  "payload": {
+    "action": "completed",
+    "check_suite": {
+      "head_branch": "waltaaa-patch-1",
+      "head_sha": "329dc8801f6da722d6ac9420e142f59aa610916f",
+      "status": "completed",
+      "conclusion": "success",
+      "before": "0000000000000000000000000000000000000000",
+      "after": "329dc8801f6da722d6ac9420e142f59aa610916f",
+      "pull_requests": [],
+      "app": {
+        "owner": {
+          "login": "travis-ci",
+          "type": "Organization"
+        },
+        "name": "Travis CI"
+      },
+      "latest_check_runs_count": 1,
+      "head_commit": {
+        "tree_id": "911f57504612def9e96f0991fc84d59e078ec674",
+        "message": "Update test.txt",
+        "timestamp": "2018-11-28T12:25:01Z",
+        "author": {
+          "name": "waltaaa"
+        },
+        "committer": {
+          "name": "GitHub"
+        }
+      }
+    },
+    "repository": {
+      "name": "testtest",
+      "full_name": "nikku/testtest",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 13,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 1,
+      "open_issues_count": 0,
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}

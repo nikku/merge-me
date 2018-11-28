@@ -1,0 +1,15 @@
+{
+  "name": "checks.listSuitesForRef",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest-checks",
+    "ref": "ca7142df376bebb6edcc0c156ca6897d39f468e2"
+  },
+  "result": {
+    "data": {
+      "total_count": 0,
+      "check_suites": []
+    }
+  }
+}

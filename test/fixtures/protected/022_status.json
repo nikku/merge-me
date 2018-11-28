@@ -1,0 +1,64 @@
+{
+  "name": "status",
+  "type": "event",
+  "payload": {
+    "sha": "4f7b58a550a45d7a807f2cb0095946b03dc3d3f7",
+    "name": "nikku/testtest",
+    "context": "continuous-integration/travis-ci/push",
+    "state": "pending",
+    "commit": {
+      "sha": "4f7b58a550a45d7a807f2cb0095946b03dc3d3f7",
+      "commit": {
+        "author": {
+          "name": "waltaaa"
+        },
+        "committer": {
+          "name": "merge-me-test[bot]"
+        },
+        "message": "Update test.txt",
+        "tree": {
+          "sha": "911f57504612def9e96f0991fc84d59e078ec674"
+        },
+        "comment_count": 0
+      },
+      "author": {
+        "login": "waltaaa",
+        "type": "User"
+      },
+      "committer": {
+        "login": "merge-me-test[bot]",
+        "type": "Bot"
+      },
+      "parents": [
+        {
+          "sha": "15966515740adcdc8999d1c98a7ead8136cb55a7"
+        }
+      ]
+    },
+    "branches": [
+      {
+        "name": "master",
+        "commit": {
+          "sha": "4f7b58a550a45d7a807f2cb0095946b03dc3d3f7"
+        }
+      }
+    ],
+    "repository": {
+      "name": "testtest",
+      "full_name": "nikku/testtest",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 13,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 1,
+      "open_issues_count": 0,
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}

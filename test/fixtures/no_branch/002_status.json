@@ -1,0 +1,64 @@
+{
+  "name": "status",
+  "type": "event",
+  "payload": {
+    "sha": "180db1c935e6fa000d1b88660a77f7a61fab5e49",
+    "name": "nikku/testtest",
+    "context": "continuous-integration/travis-ci/push",
+    "state": "success",
+    "commit": {
+      "sha": "180db1c935e6fa000d1b88660a77f7a61fab5e49",
+      "commit": {
+        "author": {
+          "name": "waltaaa"
+        },
+        "committer": {
+          "name": "GitHub"
+        },
+        "message": "Update test.txt",
+        "tree": {
+          "sha": "a1c01f92ec298a7d4801972188d6f33e4be0a8ce"
+        },
+        "comment_count": 0
+      },
+      "author": {
+        "login": "waltaaa",
+        "type": "User"
+      },
+      "committer": {
+        "login": "web-flow",
+        "type": "User"
+      },
+      "parents": [
+        {
+          "sha": "6dddb0904e02f6503d96b0ab6ec0a5a064027ccf"
+        }
+      ]
+    },
+    "branches": [
+      {
+        "name": "master",
+        "commit": {
+          "sha": "180db1c935e6fa000d1b88660a77f7a61fab5e49"
+        }
+      }
+    ],
+    "repository": {
+      "name": "testtest",
+      "full_name": "nikku/testtest",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 14,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 1,
+      "open_issues_count": 0,
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}

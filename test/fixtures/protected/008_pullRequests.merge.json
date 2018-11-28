@@ -1,0 +1,17 @@
+{
+  "name": "pullRequests.merge",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "number": 23,
+    "sha": "329dc8801f6da722d6ac9420e142f59aa610916f",
+    "merge_method": "rebase"
+  },
+  "result": {
+    "error": {
+      "code": 405,
+      "message": "{\"message\":\"Required status check \\\"Travis CI - Pull Request\\\" is expected. At least 1 approving review is required by reviewers with write access.\",\"documentation_url\":\"https://help.github.com/articles/about-protected-branches\"}"
+    }
+  }
+}
