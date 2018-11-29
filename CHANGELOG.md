@@ -6,6 +6,10 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.4.0
+
+* `FEAT`: ignore queued checks for pull request approval
+
 ## 0.3.2
 
 * `FIX`: workaround broken Codecov app checks ([#7](https://github.com/nikku/merge-me/issues/7))
