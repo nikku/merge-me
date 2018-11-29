@@ -15,24 +15,19 @@ Consume as [GitHub app](https://github.com/apps/merge-me) or fork and deploy you
 ## Features
 
 * Zero configuration
+* Enforces [branch protection rules](https://help.github.com/articles/about-protected-branches/), if configured
+* Applies [sensible defaults](#merge-rules) in the absence of branch protection
 * Merges using the _rebase_ strategy
-* Adheres to configured [branch protection](https://help.github.com/articles/about-protected-branches/) rules
 
 
 ## Merge Rules
 
-The bot ensures that a pull request meets the following conditions before merging it:
-
-#### With Branch Protection
-
-* Configured [branch protection](https://help.github.com/articles/about-protected-branches/) rules are met
-
-#### Without Branch Protection
+In the absence of [branch protection rules](https://help.github.com/articles/about-protected-branches/) the app ensures a pull request meets the following conditions before merging:
 
 * There exists _at least one_ status check
 * All status checks are _completed_
 * All status checks got the outcome _successful_ or _neutral_
-* Pull requests got at least a single approved review
+* There exists at least a single approved review
 * No reviewer requested changes
 
 
