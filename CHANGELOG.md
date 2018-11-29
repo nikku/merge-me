@@ -6,6 +6,10 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.3.0
+
+* `CHORE`: rename to `@nikku/merge-me` to allow publishing to npm
+
 ## 0.2.0
 
 * `FEAT`: support [checks](https://developer.github.com/v3/checks/) ([#3](https://github.com/nikku/merge-me/issues/3))
