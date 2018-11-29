@@ -1,0 +1,43 @@
+{
+  "name": "checks.listSuitesForRef",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest-checks",
+    "ref": "ca7142df376bebb6edcc0c156ca6897d39f468e2"
+  },
+  "result": {
+    "data": {
+      "total_count": 1,
+      "check_suites": [
+        {
+          "head_branch": "waltaaa-patch-1",
+          "head_sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+          "status": "completed",
+          "conclusion": "success",
+          "latest_check_runs_count": 1
+        },
+        {
+          "head_branch": "waltaaa-patch-1",
+          "head_sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+          "status": "completed",
+          "conclusion": "neutral",
+          "latest_check_runs_count": 0
+        },
+        {
+          "head_branch": "waltaaa-patch-1",
+          "head_sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+          "status": "in_progress",
+          "latest_check_runs_count": 0
+        },
+        {
+          "head_branch": "waltaaa-patch-1",
+          "head_sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+          "status": "queued",
+          "conclusion": "success",
+          "latest_check_runs_count": 0
+        }
+      ]
+    }
+  }
+}

@@ -61,10 +61,10 @@ describe('bot', function() {
     });
 
 
-    it('should ignore codecov check', async function() {
+    it('should ignore queued checks', async function() {
 
       // given
-      const recording = loadRecording('ignore_codecov_check');
+      const recording = loadRecording('ignore_queued_checks');
 
       // then
       await recording.replay();

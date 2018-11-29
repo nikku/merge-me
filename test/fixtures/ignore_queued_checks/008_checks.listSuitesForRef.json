@@ -20,12 +20,15 @@
         {
           "head_branch": "waltaaa-patch-1",
           "head_sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+          "status": "completed",
+          "conclusion": "neutral",
+          "latest_check_runs_count": 0
+        },
+        {
+          "head_branch": "waltaaa-patch-1",
+          "head_sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
           "status": "queued",
-          "latest_check_runs_count": 0,
-          "app": {
-            "id": 254,
-            "name": "Codecov"
-          }
+          "latest_check_runs_count": 0
         }
       ]
     }
