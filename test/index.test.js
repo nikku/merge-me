@@ -61,6 +61,16 @@ describe('bot', function() {
     });
 
 
+    it('should ignore codecov check', async function() {
+
+      // given
+      const recording = loadRecording('ignore_codecov_check');
+
+      // then
+      await recording.replay();
+    });
+
+
     it('should handle missing branch', async function() {
 
       // given
