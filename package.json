@@ -5,6 +5,9 @@
   "author": "Nico Rehwaldt <git_nikku@nixis.de>",
   "license": "MIT",
   "repository": "https://github.com/nikku/merge-me.git",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "probot",
     "github",
