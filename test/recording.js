@@ -8,6 +8,17 @@ const { Application } = require('probot');
 
 const MergeMe = require('..');
 
+function ApiCall(name) {
+  return Entry('api-call', name);
+}
+
+function Event(name) {
+  return Entry('event', name);
+}
+
+function Entry(type, name) {
+  return `${type}:${name}`;
+}
 
 class Recording {
 
@@ -74,7 +85,7 @@ class Recording {
       } = entry;
 
       if (type !== 'event') {
-        throw new Error(`expected recorded event, found ${type} :: ${name}`);
+        throw new Error(`expected <${Event('*')}>, found <${Entry(type, name)}>`);
       }
 
       // remove entry from top of recording
@@ -82,7 +93,7 @@ class Recording {
         payload
       } = this.pop();
 
-      this.trace(`replaying ${type}: ${name}`);
+      this.trace(`replaying <${Entry(type, name)}>`);
 
       await this.app.receive({
         name,
@@ -146,7 +157,7 @@ function ReplayingGithub(recording) {
       const entry = recording.pop();
 
       if (!entry) {
-        throw new Error(`no entry to replay ${recordName}`);
+        throw new Error(`expected <end of recording>, found <${ApiCall(recordName)}>`);
       }
 
       const {
@@ -156,11 +167,11 @@ function ReplayingGithub(recording) {
         result
       } = entry;
 
-      recording.trace(`replaying ${type} : ${name}`);
-
       if (name !== recordName || type !== 'api-call') {
-        throw new Error(`expected api-call :: ${recordName} but got ${type} :: ${name}`);
+        throw new Error(`expected <${Entry(type, name)}>, found <${ApiCall(recordName)}>`);
       }
+
+      recording.trace(`replaying <${Entry(type, name)}>`);
 
       expect(actualArgs).to.eql(expectedArgs);
 
