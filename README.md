@@ -1,7 +1,7 @@
 # merge-me
 
 [![Build Status](https://travis-ci.com/nikku/merge-me.svg?branch=master)](https://travis-ci.com/nikku/merge-me)
-[![codecov](https://codecov.io/gh/nikku/merge-me/branch/master/graph/badge.svg)](https://codecov.io/gh/nikku/merge-me)
+[![Code coverage](https://img.shields.io/codecov/c/github/nikku/merge-me.svg)](https://codecov.io/gh/nikku/merge-me)
 
 A GitHub App built with [Probot](https://probot.github.io) that merges your pull requests once all required checks pass.
 
