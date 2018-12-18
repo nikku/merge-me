@@ -30,6 +30,16 @@ In the absence of [branch protection rules](https://help.github.com/articles/abo
 * No reviewer requested changes
 
 
+## Related
+
+This app works nicely with others:
+
+* [WIP](https://github.com/apps/wip) - prevents merging of branches that you tag as _work in progress_
+* [delete-merged-branch](https://github.com/apps/delete-merged-branch) - deletes the feature branch once merged
+
+Combine the apps as needed for a great merge flow.
+
+
 ## Setup
 
 ```sh
@@ -39,6 +49,11 @@ npm install
 # run the bot
 npm start
 ```
+
+
+## Alternatives
+
+Consider [probot-auto-merge](https://github.com/bobvanderlinden/probot-auto-merge) if you need a bot with more configuration options. It includes many of the features provided by [related apps](#related), too.
 
 
 ## License
