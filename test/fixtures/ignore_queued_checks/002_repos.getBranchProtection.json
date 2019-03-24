@@ -8,8 +8,7 @@
   },
   "result": {
     "error": {
-      "code": 404,
-      "status": "Not Found",
+      "status": 404,
       "message": "{\"message\":\"Branch not protected\",\"documentation_url\":\"https://developer.github.com/v3/repos/branches/#get-branch-protection\"}"
     }
   }

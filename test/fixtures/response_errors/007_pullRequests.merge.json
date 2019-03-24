@@ -10,7 +10,7 @@
   },
   "result": {
     "error": {
-      "code": 500,
+      "status": 500,
       "message": "{\"message\":\"Opps\"}"
     }
   }

@@ -10,7 +10,7 @@
   },
   "result": {
     "error": {
-      "code": 405,
+      "status": 405,
       "message": "{\"message\":\"Required status check \\\"Travis CI - Pull Request\\\" is queued.\",\"documentation_url\":\"https://help.github.com/articles/about-protected-branches\"}"
     }
   }

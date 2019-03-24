@@ -8,8 +8,7 @@
   },
   "result": {
     "error": {
-      "code": 500,
-      "status": "Internal Server Error",
+      "status": 500,
       "message": "{\"message\":\"Ooops, this should not have happened\"}"
     }
   }

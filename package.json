@@ -22,7 +22,7 @@
     "auto-test": "nodemon --exec npm test"
   },
   "dependencies": {
-    "probot": "^7.5.1"
+    "probot": "^9.0.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
