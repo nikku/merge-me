@@ -11,6 +11,7 @@
       "pull_requests": [
         {
           "number": 1,
+          "rebaseable": null,
           "head": {
             "ref": "waltaaa-patch-1",
             "sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
