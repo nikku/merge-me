@@ -113,6 +113,40 @@ describe('bot', function() {
   });
 
 
+  describe('general', function() {
+
+    it('should skip already merged', async function() {
+
+      // given
+      const recording = loadRecording('skip_merged');
+
+      // then
+      await recording.replay();
+    });
+
+
+    it('should skip draft', async function() {
+
+      // given
+      const recording = loadRecording('skip_draft');
+
+      // then
+      await recording.replay();
+    });
+
+
+    it('should skip not rebaseable', async function() {
+
+      // given
+      const recording = loadRecording('skip_non_rebaseable');
+
+      // then
+      await recording.replay();
+    });
+
+  });
+
+
   describe('error handling', function() {
 
     it('should handle unexpected response errors', async function() {

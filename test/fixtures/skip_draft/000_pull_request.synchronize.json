@@ -1,0 +1,107 @@
+{
+  "name": "pull_request.synchronize",
+  "type": "event",
+  "payload": {
+    "action": "synchronize",
+    "number": 1,
+    "pull_request": {
+      "number": 1,
+      "state": "open",
+      "title": "Update test.txt",
+      "user": {
+        "login": "waltaaa",
+        "type": "User"
+      },
+      "merge_commit_sha": "ddf7426cc44392a09f9cbd80552ecf842ab76ca6",
+      "assignees": [],
+      "requested_reviewers": [
+        {
+          "login": "nikku",
+          "type": "User"
+        }
+      ],
+      "requested_teams": [],
+      "labels": [],
+      "head": {
+        "label": "nikku:waltaaa-patch-1",
+        "ref": "waltaaa-patch-1",
+        "sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest-checks",
+          "full_name": "nikku/testtest-checks",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 0,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 0,
+          "open_issues_count": 1,
+          "forks": 0,
+          "open_issues": 1,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "nikku:master",
+        "ref": "master",
+        "sha": "ee640dc5872b064a1b48c24f823099fe6882d69e",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest-checks",
+          "full_name": "nikku/testtest-checks",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 0,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 0,
+          "open_issues_count": 1,
+          "forks": 0,
+          "open_issues": 1,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "COLLABORATOR",
+      "mergeable_state": "unknown",
+      "draft": true,
+      "comments": 0,
+      "review_comments": 0,
+      "commits": 2,
+      "additions": 2,
+      "deletions": 0,
+      "changed_files": 1
+    },
+    "before": "3831781b1c99d53a22dff46de4da83c4640916da",
+    "after": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
+    "repository": {
+      "name": "testtest-checks",
+      "full_name": "nikku/testtest-checks",
+      "owner": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "size": 0,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 0,
+      "open_issues_count": 1,
+      "forks": 0,
+      "open_issues": 1,
+      "watchers": 0,
+      "default_branch": "master"
+    }
+  }
+}
