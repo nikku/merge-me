@@ -5,6 +5,8 @@
 
 A GitHub App built with [Probot](https://probot.github.io) that merges your pull requests once all required checks pass.
 
+![merge-me bot in action](./docs/screenshot.png)
+
 
 ## Installation
 
