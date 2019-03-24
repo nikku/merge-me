@@ -6,6 +6,11 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.5.0
+
+* `FEAT`: account for pull-request `rebaseable`, `merged` and `draft` meta-data to speed up merge check
+* `FIX`: properly account for insignificant check suites
+
 ## 0.4.1
 
 * `DOCS`: various documentation improvements
