@@ -8,8 +8,7 @@
   },
   "result": {
     "error": {
-      "status": 404,
-      "message": "{\"message\":\"Not Found\",\"documentation_url\":\"https://developer.github.com/v3/repos/contents/#get-contents\"}"
+      "status": 404
     }
   }
 }
