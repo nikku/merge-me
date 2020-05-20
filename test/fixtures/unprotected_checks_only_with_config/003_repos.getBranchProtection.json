@@ -1,0 +1,14 @@
+{
+  "name": "repos.getBranchProtection",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest-checks",
+    "branch": "master"
+  },
+  "result": {
+    "error": {
+      "status": 404
+    }
+  }
+}

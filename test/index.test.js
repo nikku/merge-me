@@ -163,4 +163,22 @@ describe('bot', function() {
 
   });
 
+
+  describe('config', function() {
+
+    it('should consider minApprovals config', async function() {
+
+      // in this test following YML configuration is returned within
+      // repos.getContents.json files (encoded in Base64):
+      //    minApprovals: 2
+      //
+      // listReviews API call returns 2 approved reviews.
+
+      // given
+      const recording = loadRecording('unprotected_checks_only_with_config');
+
+      // then
+      await recording.replay();
+    });
+  });
 });
