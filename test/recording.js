@@ -76,6 +76,19 @@ class Recording {
       app.log.error = app.log.debug = app.log;
     }
 
+    const logError = app.log.error;
+
+    app.log.error = (message, error, ...args) => {
+
+      if (message instanceof Error) {
+        error = message;
+      }
+
+      this.lastError = error;
+
+      logError.call(app.log, message, error, ...args);
+    };
+
     this.app = app;
   }
 
@@ -100,14 +113,25 @@ class Recording {
         payload
       } = record;
 
+      const lastError = this.lastError;
+
       if (type !== 'event') {
-        throw new Error(`expected <${Event('*')}>, found <${Entry(type, name)}> ${File(file)}`);
+
+        const context = lastError
+          ? `\n\tLikely caused by prior error: ${lastError.message}`
+          : '';
+
+        throw new Error(
+          `expected <${Event('*')}>, found <${Entry(type, name)}> ${File(file)}${context}`
+        );
       }
 
       // remove entry from top of recording
       this.pop();
 
       this.trace(`replaying <${Entry(type, name)}> ${File(file)}`);
+
+      this.lastError = null;
 
       await this.app.receive({
         name,
