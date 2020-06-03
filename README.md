@@ -49,7 +49,7 @@ Combine the apps as needed for a great merge flow.
 npm install
 
 # run the bot
-npm start
+LOG_LEVEL=debug npm start
 ```
 
 
