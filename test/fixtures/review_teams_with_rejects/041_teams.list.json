@@ -1,0 +1,31 @@
+{
+  "name": "teams.list",
+  "type": "api-call",
+  "args": {
+    "org": "Merge-Me-Test-Organisation"
+  },
+  "result": {
+    "data": [
+      {
+        "name": "design",
+        "id": 3861523,
+        "slug": "design",
+        "privacy": "closed",
+        "permission": "pull"
+      },
+      {
+        "name": "dev",
+        "id": 3861522,
+        "slug": "dev",
+        "privacy": "closed",
+        "permission": "pull"
+      },
+      {
+        "name": "testteam123",
+        "slug": "testteam123",
+        "privacy": "closed",
+        "permission": "pull"
+      }
+    ]
+  }
+}
