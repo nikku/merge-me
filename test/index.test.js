@@ -111,8 +111,10 @@ describe('bot', function() {
 
         // Scenario:
         //
-        // dev: a, b
-        // design: a, b, c
+        // reviewTeams:
+        //   - dev (a, b)
+        //   - design (a, b, c)
+        //   - other (d)
         //
         // [a] opens a pull request
         // [c] approves
@@ -134,8 +136,9 @@ describe('bot', function() {
 
         // Scenario:
         //
-        // dev: a, b, c
-        // design: d
+        // reviewTeams:
+        //   - dev (a, b, c)
+        //   - design (d)
         //
         // a opens a pull request.
         // a asks for a review from b, c and d.
@@ -153,8 +156,9 @@ describe('bot', function() {
 
         // Scenario
         //
-        // design: a, b
-        // dev: c, d
+        // reviewTeams:
+        //   - dev (a, b)
+        //   - design (c, d)
         //
         // PR is opened. Review is requested from a, b and c.
         //
