@@ -18,7 +18,7 @@
     "dev": "nodemon",
     "start": "probot run ./index.js",
     "lint": "eslint .",
-    "test": "mocha test/*",
+    "test": "LOG_LEVEL=debug mocha test/*",
     "test-coverage": "nyc -x=lib/recorder.js -x=test/recording.js --reporter=lcov --reporter=html --reporter=text mocha test/*",
     "auto-test": "nodemon --exec npm test"
   },
