@@ -81,6 +81,31 @@ describe('bot', function() {
       // then
       await recording.replay();
     });
+
+
+    describe('team reviews', function() {
+
+      it('should consider reviewTeams config', async function() {
+
+        // in this test following YML configuration is returned within
+        // repos.getContents.json files (encided in Base64):
+        //
+        // reviewTeams:
+        // - dev
+        // - design
+
+        // Scenario:
+        // One person from dev team approves.
+        // One person from design team approves.
+        // PR is merged.
+
+        // given
+        const recording = loadRecording('review_teams_simple');
+
+        // then
+        await recording.replay();
+      });
+    });
   });
 });
 
