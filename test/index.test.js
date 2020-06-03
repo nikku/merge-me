@@ -122,6 +122,22 @@ describe('bot', function() {
       it('missing team review approval', test('review_teams_approval_missing'));
 
 
+      // Scenario:
+      //
+      // reviewTeams:
+      //   - dev (a, c)
+      //   - design (b)
+      //   - other (d)
+      //
+      // [a] opens a pull request
+      // [c] approves
+      // [b] approves
+      //
+      // PR gets merged.
+      //
+      it('ignoring unmentioned team', test('review_teams_ignore_unmentioned'));
+
+
       // Scenario
       //
       // reviewTeams:

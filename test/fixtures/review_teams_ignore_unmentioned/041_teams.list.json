@@ -1,0 +1,23 @@
+{
+  "name": "teams.list",
+  "type": "api-call",
+  "args": {
+    "org": "Merge-Me-Test-Organisation"
+  },
+  "result": {
+    "data": [
+      {
+        "name": "design",
+        "id": 1
+      },
+      {
+        "name": "dev",
+        "id": 2
+      },
+      {
+        "name": "other",
+        "id": 3
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "name": "pull_request.closed",
+  "type": "event",
+  "payload": {
+    "action": "closed",
+    "number": 12,
+    "pull_request": {
+      "number": 12,
+      "state": "closed",
+      "title": "feat: test",
+      "user": {
+        "login": "oguzeroglu",
+        "type": "User"
+      },
+      "merge_commit_sha": "de6823ae07b63a7ba4e263f3f9cba7ce015ae650",
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [],
+      "draft": false,
+      "head": {
+        "label": "Merge-Me-Test-Organisation:test-test",
+        "ref": "test-test",
+        "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+        "user": {
+          "login": "Merge-Me-Test-Organisation",
+          "type": "Organization"
+        },
+        "repo": {
+          "name": "merge-me-test",
+          "full_name": "Merge-Me-Test-Organisation/merge-me-test",
+          "owner": {
+            "login": "Merge-Me-Test-Organisation",
+            "type": "Organization"
+          },
+          "size": 16,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 0,
+          "open_issues_count": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "Merge-Me-Test-Organisation:master",
+        "ref": "master",
+        "sha": "c97fa52a39aee73230b98a5faea7f27cadb0acc4",
+        "user": {
+          "login": "Merge-Me-Test-Organisation",
+          "type": "Organization"
+        },
+        "repo": {
+          "name": "merge-me-test",
+          "full_name": "Merge-Me-Test-Organisation/merge-me-test",
+          "owner": {
+            "login": "Merge-Me-Test-Organisation",
+            "type": "Organization"
+          },
+          "size": 16,
+          "stargazers_count": 0,
+          "watchers_count": 0,
+          "forks_count": 0,
+          "open_issues_count": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "watchers": 0,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "MEMBER",
+      "merged": true,
+      "mergeable_state": "unknown",
+      "merged_by": {
+        "login": "merge-me-test-app2[bot]",
+        "type": "Bot"
+      },
+      "comments": 0,
+      "review_comments": 0,
+      "commits": 2,
+      "additions": 2,
+      "deletions": 0,
+      "changed_files": 2
+    },
+    "repository": {
+      "name": "merge-me-test",
+      "full_name": "Merge-Me-Test-Organisation/merge-me-test",
+      "owner": {
+        "login": "Merge-Me-Test-Organisation",
+        "type": "Organization"
+      },
+      "size": 16,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 0,
+      "open_issues_count": 0,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master"
+    },
+    "organization": {
+      "login": "Merge-Me-Test-Organisation"
+    }
+  }
+}
