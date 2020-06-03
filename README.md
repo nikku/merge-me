@@ -50,6 +50,9 @@ npm install
 
 # run the bot
 LOG_LEVEL=debug npm start
+
+# test the bot
+LOG_LEVEL=debug npm test
 ```
 
 
