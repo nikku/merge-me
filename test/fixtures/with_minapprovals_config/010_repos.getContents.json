@@ -1,0 +1,14 @@
+{
+  "name": "repos.getContents",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest-checks",
+    "path": ".github/merge-me.yml"
+  },
+  "result": {
+    "data": {
+      "content": "bWluQXBwcm92YWxzOiAy"
+    }
+  }
+}
