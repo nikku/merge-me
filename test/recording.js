@@ -231,7 +231,7 @@ function ReplayingGithub(recording) {
       } = result;
 
       if (error) {
-        throw Object.assign(new Error(error.message || 'test error'), error);
+        throw Object.assign(new Error(error.message || 'recorded error'), error);
       }
 
       return {
