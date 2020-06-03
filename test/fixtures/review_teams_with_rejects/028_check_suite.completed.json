@@ -35,27 +35,7 @@
           "login": "travis-ci",
           "type": "Organization"
         },
-        "name": "Travis CI",
-        "permissions": {
-          "checks": "write",
-          "contents": "read",
-          "deployments": "write",
-          "members": "read",
-          "metadata": "read",
-          "pull_requests": "read",
-          "repository_hooks": "write",
-          "statuses": "write"
-        },
-        "events": [
-          "check_run",
-          "check_suite",
-          "create",
-          "delete",
-          "member",
-          "pull_request",
-          "push",
-          "repository"
-        ]
+        "name": "Travis CI"
       },
       "latest_check_runs_count": 2,
       "head_commit": {
