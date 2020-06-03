@@ -207,7 +207,7 @@ function ReplayingGithub(recording) {
       } = result;
 
       if (error) {
-        throw error;
+        throw Object.assign(new Error(error.message || 'test error'), error);
       }
 
       return {
