@@ -1,5 +1,7 @@
 const { expect } = require('chai');
 
+const path = require('path');
+
 const fs = require('fs');
 
 const FIXTURE_BASE = `${__dirname}/fixtures`;
@@ -20,13 +22,17 @@ function Entry(type, name) {
   return `${type}:${name}`;
 }
 
+function File(path) {
+  return `(${path})`;
+}
+
 class Recording {
 
-  constructor(entries, options = {}) {
+  constructor(entries) {
     this.entries = entries;
     this.idx = 0;
 
-    this.debug = options.debug;
+    this.debug = process.env.LOG_LEVEL == 'debug';
   }
 
   /**
@@ -34,7 +40,7 @@ class Recording {
    */
   trace(msg) {
     if (this.debug) {
-      console.log(msg);
+      console.debug(msg);
     }
   }
 
@@ -95,13 +101,13 @@ class Recording {
       } = record;
 
       if (type !== 'event') {
-        throw new Error(`expected <${Event('*')}>, found <${Entry(type, name)}> (${file})`);
+        throw new Error(`expected <${Event('*')}>, found <${Entry(type, name)}> ${File(file)}`);
       }
 
       // remove entry from top of recording
       this.pop();
 
-      this.trace(`replaying <${Entry(type, name)}> (${file})`);
+      this.trace(`replaying <${Entry(type, name)}> ${File(file)}`);
 
       await this.app.receive({
         name,
@@ -132,7 +138,7 @@ class Recording {
 }
 
 
-function loadRecording(name, options) {
+function loadRecording(name) {
 
   const dir = `${FIXTURE_BASE}/${name}`;
 
@@ -141,7 +147,7 @@ function loadRecording(name, options) {
   const entries = entryNames.sort().map(function(entryName) {
 
     try {
-      const file = `${dir}/${entryName}`;
+      const file = path.relative(process.cwd(), `${dir}/${entryName}`);
 
       const record = JSON.parse(fs.readFileSync(file, 'utf-8'));
 
@@ -154,7 +160,7 @@ function loadRecording(name, options) {
     }
   });
 
-  return new Recording(entries, options);
+  return new Recording(entries);
 }
 
 
@@ -188,10 +194,10 @@ function ReplayingGithub(recording) {
       } = record;
 
       if (name !== recordName || type !== 'api-call') {
-        throw new Error(`expected <${Entry(type, name)}>, found <${ApiCall(recordName)}> (${file})`);
+        throw new Error(`expected <${Entry(type, name)}>, found <${ApiCall(recordName)}> ${File(file)}`);
       }
 
-      recording.trace(`replaying <${Entry(type, name)}> (${file})`);
+      recording.trace(`replaying <${Entry(type, name)}> ${File(file)}`);
 
       expect(actualArgs).to.eql(expectedArgs);
 
