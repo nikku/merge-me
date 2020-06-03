@@ -65,7 +65,7 @@ describe('bot', function() {
   });
 
 
-  describe('config', function() {
+  describe('reviews', function() {
 
     it('should consider minApprovals config', async function() {
 
@@ -83,7 +83,7 @@ describe('bot', function() {
     });
 
 
-    describe('team reviews', function() {
+    describe('should consider reviewTeams config', function() {
 
       // for team reviews tests, following YML configuration is returned within
       // repos.getContents.json files (encided in Base64):
@@ -92,7 +92,7 @@ describe('bot', function() {
       // - dev
       // - design
 
-      it('should consider reviewTeams config', async function() {
+      it('simple scenario', async function() {
 
         // Scenario:
         // One person from dev team approves.
@@ -107,7 +107,7 @@ describe('bot', function() {
       });
 
 
-      it('should correctly handle people with multiple teams', async function() {
+      it('people in multiple teams', async function() {
 
         // Scenario:
         //
@@ -130,7 +130,7 @@ describe('bot', function() {
       });
 
 
-      it('should not merge unless there are approvals from each configured team', async function() {
+      it('missing team review approval', async function() {
 
         // Scenario:
         //
@@ -149,7 +149,7 @@ describe('bot', function() {
       });
 
 
-      it('should not merge is there are rejected reviews', async function() {
+      it('rejected review', async function() {
 
         // Scenario
         //
@@ -166,8 +166,11 @@ describe('bot', function() {
         // then
         await recording.replay();
       });
+
     });
+
   });
+
 });
 
 
