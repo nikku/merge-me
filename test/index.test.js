@@ -7,160 +7,76 @@ describe('bot', function() {
 
   describe('with branch protection', function() {
 
-    it('should support basic flow', async function() {
-
-      // given
-      const recording = loadRecording('protected');
-
-      // then
-      await recording.replay();
-    });
+    it('should support basic flow', test('protected'));
 
 
-    it('should handle <check_suite.completed> events', async function() {
-
-      // given
-      const recording = loadRecording('protected_check_suite');
-
-      // then
-      await recording.replay();
-    });
+    it('should handle <check_suite.completed> events', test('protected_check_suite'));
 
   });
 
 
   describe('without branch protection', function() {
 
-    it('should merge with status', async function() {
-
-      // given
-      const recording = loadRecording('unprotected_status_only');
-
-      // then
-      await recording.replay();
-    });
+    it('should merge with status', test('unprotected_status_only'));
 
 
-    it('should merge with checks', async function() {
-
-      // given
-      const recording = loadRecording('unprotected_checks_only');
-
-      // then
-      await recording.replay();
-    });
+    it('should merge with checks', test('unprotected_checks_only'));
 
 
-    it('should handle check conclusions', async function() {
-
-      // given
-      const recording = loadRecording('unprotected_check_conclusions');
-
-      // then
-      await recording.replay();
-    });
+    it('should handle check conclusions', test('unprotected_check_conclusions'));
 
 
-    it('should ignore queued checks', async function() {
-
-      // given
-      const recording = loadRecording('ignore_queued_checks');
-
-      // then
-      await recording.replay();
-    });
+    it('should ignore queued checks', test('ignore_queued_checks'));
 
 
-    it('should handle missing branch', async function() {
-
-      // given
-      const recording = loadRecording('no_branch');
-
-      // then
-      await recording.replay();
-    });
+    it('should handle missing branch', test('no_branch'));
 
 
-    it('should not merge with rejected reviews', async function() {
-
-      // given
-      const recording = loadRecording('unprotected_rejected_reviews');
-
-      // then
-      await recording.replay();
-    });
+    it('should not merge with rejected reviews', test('unprotected_rejected_reviews'));
 
 
-    it('should handle missing status and checks', async function() {
-
-      // given
-      const recording = loadRecording('unprotected_no_status_checks');
-
-      // then
-      await recording.replay();
-    });
+    it('should handle missing status and checks', test('unprotected_no_status_checks'));
 
 
-    it('should handle status = failed', async function() {
-
-      // given
-      const recording = loadRecording('unprotected_status_failed');
-
-      // then
-      await recording.replay();
-    });
+    it('should handle status = failed', test('unprotected_status_failed'));
 
   });
 
 
   describe('general', function() {
 
-    it('should skip already merged', async function() {
-
-      // given
-      const recording = loadRecording('skip_merged');
-
-      // then
-      await recording.replay();
-    });
+    it('should skip already merged', test('skip_merged'));
 
 
-    it('should skip draft', async function() {
-
-      // given
-      const recording = loadRecording('skip_draft');
-
-      // then
-      await recording.replay();
-    });
+    it('should skip draft', test('skip_draft'));
 
 
-    it('should skip not rebaseable', async function() {
-
-      // given
-      const recording = loadRecording('skip_non_rebaseable');
-
-      // then
-      await recording.replay();
-    });
+    it('should skip not rebaseable', test('skip_non_rebaseable'));
 
   });
 
 
   describe('error handling', function() {
 
-    it('should handle unexpected response errors', async function() {
-
-      // given
-      const recording = loadRecording('response_errors');
-
-      // error during getBranchProtection check
-      // error during merge
-
-      // then
-      await recording.replay();
-    });
+    // error during getBranchProtection check
+    // error during merge
+    it('should handle unexpected response errors', test('response_errors'));
 
   });
 
 });
+
+
+// helpers /////////////
+
+function test(recordingName) {
+
+  return async function() {
+    // given
+    const recording = loadRecording(recordingName);
+
+    // then
+    await recording.replay();
+  };
+
+}
