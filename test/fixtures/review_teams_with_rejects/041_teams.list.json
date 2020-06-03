@@ -8,23 +8,15 @@
     "data": [
       {
         "name": "design",
-        "id": 3861523,
-        "slug": "design",
-        "privacy": "closed",
-        "permission": "pull"
+        "id": 1
       },
       {
         "name": "dev",
-        "id": 3861522,
-        "slug": "dev",
-        "privacy": "closed",
-        "permission": "pull"
+        "id": 2
       },
       {
-        "name": "testteam123",
-        "slug": "testteam123",
-        "privacy": "closed",
-        "permission": "pull"
+        "name": "other",
+        "id": 3
       }
     ]
   }
