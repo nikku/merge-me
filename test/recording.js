@@ -46,7 +46,11 @@ class Recording {
 
     await this.tick();
 
-    expect(this.peek()).not.to.exist;
+    const lastEntry = this.peek();
+
+    if (lastEntry) {
+      throw new Error(`expected all entries replayed, found left over recording (${lastEntry.file})`);
+    }
   }
 
   /**
@@ -80,20 +84,24 @@ class Recording {
     while ((entry = this.peek())) {
 
       const {
-        type,
-        name
+        record,
+        file
       } = entry;
 
+      const {
+        type,
+        name,
+        payload
+      } = record;
+
       if (type !== 'event') {
-        throw new Error(`expected <${Event('*')}>, found <${Entry(type, name)}>`);
+        throw new Error(`expected <${Event('*')}>, found <${Entry(type, name)}> (${file})`);
       }
 
       // remove entry from top of recording
-      const {
-        payload
-      } = this.pop();
+      this.pop();
 
-      this.trace(`replaying <${Entry(type, name)}>`);
+      this.trace(`replaying <${Entry(type, name)}> (${file})`);
 
       await this.app.receive({
         name,
@@ -133,7 +141,14 @@ function loadRecording(name, options) {
   const entries = entryNames.sort().map(function(entryName) {
 
     try {
-      return JSON.parse(fs.readFileSync(`${dir}/${entryName}`, 'utf-8'));
+      const file = `${dir}/${entryName}`;
+
+      const record = JSON.parse(fs.readFileSync(file, 'utf-8'));
+
+      return {
+        file,
+        record
+      };
     } catch (e) {
       throw new Error(`failed to parse ${dir}/${entryName}: ${e.message}`);
     }
@@ -157,21 +172,26 @@ function ReplayingGithub(recording) {
       const entry = recording.pop();
 
       if (!entry) {
-        throw new Error(`expected <end of recording>, found <${ApiCall(recordName)}>`);
+        throw new Error(`expected <${ApiCall(recordName)}>, found <end of recording>`);
       }
+
+      const {
+        record,
+        file
+      } = entry;
 
       const {
         type,
         name,
         args: expectedArgs,
         result
-      } = entry;
+      } = record;
 
       if (name !== recordName || type !== 'api-call') {
-        throw new Error(`expected <${Entry(type, name)}>, found <${ApiCall(recordName)}>`);
+        throw new Error(`expected <${Entry(type, name)}>, found <${ApiCall(recordName)}> (${file})`);
       }
 
-      recording.trace(`replaying <${Entry(type, name)}>`);
+      recording.trace(`replaying <${Entry(type, name)}> (${file})`);
 
       expect(actualArgs).to.eql(expectedArgs);
 
