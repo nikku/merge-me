@@ -85,14 +85,14 @@ describe('bot', function() {
 
     describe('team reviews', function() {
 
-      it('should consider reviewTeams config', async function() {
+      // for team reviews tests, following YML configuration is returned within
+      // repos.getContents.json files (encided in Base64):
+      //
+      // reviewTeams:
+      // - dev
+      // - design
 
-        // in this test following YML configuration is returned within
-        // repos.getContents.json files (encided in Base64):
-        //
-        // reviewTeams:
-        // - dev
-        // - design
+      it('should consider reviewTeams config', async function() {
 
         // Scenario:
         // One person from dev team approves.
@@ -101,6 +101,29 @@ describe('bot', function() {
 
         // given
         const recording = loadRecording('review_teams_simple');
+
+        // then
+        await recording.replay();
+      });
+
+
+      it('should correctly handle people with multiple teams', async function() {
+
+        // Scenario:
+        //
+        // dev: a, b
+        // design: a, b, c
+        //
+        // [a] opens a pull request
+        // [c] approves
+        // [b] approves
+        // PR gets merged.
+        //
+        // Since dev is configured before design inside the YAML file,
+        // the approval of [b] is counted as dev approval rather than design approval.
+
+        // given
+        const recording = loadRecording('review_teams_multi_team');
 
         // then
         await recording.replay();
