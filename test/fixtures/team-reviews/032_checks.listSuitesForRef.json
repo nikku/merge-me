@@ -1,0 +1,256 @@
+{
+  "name": "checks.listSuitesForRef",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-Organisation",
+    "repo": "merge-me-test",
+    "ref": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+    "headers": {}
+  },
+  "result": {
+    "data": {
+      "total_count": 3,
+      "check_suites": [
+        {
+          "head_branch": "test-test",
+          "head_sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "status": "queued",
+          "before": "29f5936b763a27b8703699e18f4d0f4a0e37ddbf",
+          "after": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "pull_requests": [
+            {
+              "number": 12,
+              "head": {
+                "ref": "test-test",
+                "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+                "repo": {
+                  "name": "merge-me-test"
+                }
+              },
+              "base": {
+                "ref": "master",
+                "sha": "c97fa52a39aee73230b98a5faea7f27cadb0acc4",
+                "repo": {
+                  "name": "merge-me-test"
+                }
+              }
+            }
+          ],
+          "app": {
+            "slug": "merge-me-test-app2",
+            "owner": {
+              "login": "Merge-Me-Test-Organisation",
+              "type": "Organization"
+            },
+            "name": "merge-me-test-app2",
+            "permissions": {
+              "actions": "write",
+              "administration": "write",
+              "blocking": "write",
+              "checks": "write",
+              "contents": "write",
+              "deployments": "write",
+              "emails": "write",
+              "followers": "write",
+              "gpg_keys": "write",
+              "issues": "write",
+              "keys": "write",
+              "members": "write",
+              "metadata": "read",
+              "organization_administration": "write",
+              "organization_hooks": "write",
+              "organization_plan": "read",
+              "organization_projects": "admin",
+              "organization_secrets": "write",
+              "organization_self_hosted_runners": "write",
+              "organization_user_blocking": "write",
+              "pages": "write",
+              "plan": "read",
+              "pull_requests": "write",
+              "repository_hooks": "write",
+              "repository_projects": "admin",
+              "secrets": "write",
+              "security_events": "write",
+              "starring": "write",
+              "statuses": "write",
+              "team_discussions": "write",
+              "vulnerability_alerts": "read",
+              "watching": "write",
+              "workflows": "write"
+            },
+            "events": [
+              "check_run",
+              "check_suite",
+              "commit_comment",
+              "create",
+              "delete",
+              "deployment",
+              "deployment_status",
+              "deploy_key",
+              "fork",
+              "gollum",
+              "issues",
+              "issue_comment",
+              "label",
+              "member",
+              "membership",
+              "milestone",
+              "organization",
+              "org_block",
+              "page_build",
+              "project",
+              "project_card",
+              "project_column",
+              "public",
+              "pull_request",
+              "pull_request_review",
+              "pull_request_review_comment",
+              "push",
+              "release",
+              "repository",
+              "repository_dispatch",
+              "star",
+              "status",
+              "team",
+              "team_add",
+              "watch"
+            ]
+          },
+          "latest_check_runs_count": 0,
+          "head_commit": {
+            "tree_id": "51fcf48eb13bbff985dc6662d6043e03271ac1a4",
+            "message": "feat: test2",
+            "timestamp": "2020-05-28T08:47:11Z",
+            "author": {
+              "name": "Oguz"
+            },
+            "committer": {
+              "name": "Oguz"
+            }
+          },
+          "repository": {
+            "name": "merge-me-test",
+            "full_name": "Merge-Me-Test-Organisation/merge-me-test",
+            "owner": {
+              "login": "Merge-Me-Test-Organisation",
+              "type": "Organization"
+            }
+          }
+        },
+        {
+          "head_branch": "test-test",
+          "head_sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "status": "completed",
+          "conclusion": "success",
+          "before": "29f5936b763a27b8703699e18f4d0f4a0e37ddbf",
+          "after": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "pull_requests": [],
+          "app": {
+            "slug": "travis-ci",
+            "owner": {
+              "login": "travis-ci",
+              "type": "Organization"
+            },
+            "name": "Travis CI",
+            "permissions": {
+              "checks": "write",
+              "contents": "read",
+              "deployments": "write",
+              "members": "read",
+              "metadata": "read",
+              "pull_requests": "read",
+              "repository_hooks": "write",
+              "statuses": "write"
+            },
+            "events": [
+              "check_run",
+              "check_suite",
+              "create",
+              "delete",
+              "member",
+              "pull_request",
+              "push",
+              "repository"
+            ]
+          },
+          "latest_check_runs_count": 2,
+          "head_commit": {
+            "tree_id": "51fcf48eb13bbff985dc6662d6043e03271ac1a4",
+            "message": "feat: test2",
+            "timestamp": "2020-05-28T08:47:11Z",
+            "author": {
+              "name": "Oguz"
+            },
+            "committer": {
+              "name": "Oguz"
+            }
+          },
+          "repository": {
+            "name": "merge-me-test",
+            "full_name": "Merge-Me-Test-Organisation/merge-me-test",
+            "owner": {
+              "login": "Merge-Me-Test-Organisation",
+              "type": "Organization"
+            }
+          }
+        },
+        {
+          "head_branch": "test-test",
+          "head_sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "status": "queued",
+          "before": "29f5936b763a27b8703699e18f4d0f4a0e37ddbf",
+          "after": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "pull_requests": [],
+          "app": {
+            "slug": "dependabot",
+            "owner": {
+              "login": "github",
+              "type": "Organization"
+            },
+            "name": "Dependabot",
+            "permissions": {
+              "checks": "write",
+              "contents": "write",
+              "issues": "write",
+              "members": "read",
+              "metadata": "read",
+              "pull_requests": "write",
+              "statuses": "read",
+              "workflows": "write"
+            },
+            "events": [
+              "check_suite",
+              "issues",
+              "issue_comment",
+              "label",
+              "pull_request",
+              "pull_request_review",
+              "pull_request_review_comment",
+              "repository"
+            ]
+          },
+          "latest_check_runs_count": 0,
+          "head_commit": {
+            "tree_id": "51fcf48eb13bbff985dc6662d6043e03271ac1a4",
+            "message": "feat: test2",
+            "timestamp": "2020-05-28T08:47:11Z",
+            "author": {
+              "name": "Oguz"
+            },
+            "committer": {
+              "name": "Oguz"
+            }
+          },
+          "repository": {
+            "name": "merge-me-test",
+            "full_name": "Merge-Me-Test-Organisation/merge-me-test",
+            "owner": {
+              "login": "Merge-Me-Test-Organisation",
+              "type": "Organization"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

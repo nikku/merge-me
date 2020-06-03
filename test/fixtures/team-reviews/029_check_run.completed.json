@@ -1,0 +1,142 @@
+{
+  "name": "check_run.completed",
+  "type": "event",
+  "payload": {
+    "action": "completed",
+    "check_run": {
+      "head_sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+      "external_id": "168533080",
+      "status": "completed",
+      "conclusion": "success",
+      "output": {
+        "title": "Build Passed",
+        "summary": "<a href='https://travis-ci.com/github/Merge-Me-Test-Organisation/merge-me-test/builds/168533080'><img src='https://travis-ci.com/images/stroke-icons/icon-passed.png' height='11'> The build</a> **passed**, just like the previous build.",
+        "text": "This is a normal build for the test-test branch. You should be able to reproduce it by checking out the branch locally.\n\n## Jobs and Stages\nThis build only has a single job.\nYou can use jobs to [test against multiple versions](https://docs.travis-ci.com/user/customizing-the-build/#Build-Matrix) of your runtime or dependencies, or to [speed up your build](https://docs.travis-ci.com/user/speeding-up-the-build/).\n\n## Build Configuration\n\nBuild Option     | Setting\n-----------------|--------------\nLanguage         | Node.js\nOperating System | Linux (Xenial)\nNode.js Version  | node\n\n<details>\n<summary>Build Configuration</summary>\n<pre lang='yaml'>\n{\n  \"language\": \"node_js\",\n  \"os\": [\n    \"linux\"\n  ],\n  \"dist\": \"xenial\",\n  \"node_js\": [\n    \"node\"\n  ]\n}\n</pre>\n</details>",
+        "annotations_count": 0
+      },
+      "name": "Travis CI - Branch",
+      "check_suite": {
+        "head_branch": "test-test",
+        "head_sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+        "status": "completed",
+        "conclusion": "success",
+        "before": "29f5936b763a27b8703699e18f4d0f4a0e37ddbf",
+        "after": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+        "pull_requests": [
+          {
+            "number": 12,
+            "head": {
+              "ref": "test-test",
+              "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+              "repo": {
+                "name": "merge-me-test"
+              }
+            },
+            "base": {
+              "ref": "master",
+              "sha": "c97fa52a39aee73230b98a5faea7f27cadb0acc4",
+              "repo": {
+                "name": "merge-me-test"
+              }
+            }
+          }
+        ],
+        "app": {
+          "slug": "travis-ci",
+          "owner": {
+            "login": "travis-ci",
+            "type": "Organization"
+          },
+          "name": "Travis CI",
+          "permissions": {
+            "checks": "write",
+            "contents": "read",
+            "deployments": "write",
+            "members": "read",
+            "metadata": "read",
+            "pull_requests": "read",
+            "repository_hooks": "write",
+            "statuses": "write"
+          },
+          "events": [
+            "check_run",
+            "check_suite",
+            "create",
+            "delete",
+            "member",
+            "pull_request",
+            "push",
+            "repository"
+          ]
+        }
+      },
+      "app": {
+        "slug": "travis-ci",
+        "owner": {
+          "login": "travis-ci",
+          "type": "Organization"
+        },
+        "name": "Travis CI",
+        "permissions": {
+          "checks": "write",
+          "contents": "read",
+          "deployments": "write",
+          "members": "read",
+          "metadata": "read",
+          "pull_requests": "read",
+          "repository_hooks": "write",
+          "statuses": "write"
+        },
+        "events": [
+          "check_run",
+          "check_suite",
+          "create",
+          "delete",
+          "member",
+          "pull_request",
+          "push",
+          "repository"
+        ]
+      },
+      "pull_requests": [
+        {
+          "number": 12,
+          "head": {
+            "ref": "test-test",
+            "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+            "repo": {
+              "name": "merge-me-test"
+            }
+          },
+          "base": {
+            "ref": "master",
+            "sha": "c97fa52a39aee73230b98a5faea7f27cadb0acc4",
+            "repo": {
+              "name": "merge-me-test"
+            }
+          }
+        }
+      ]
+    },
+    "repository": {
+      "name": "merge-me-test",
+      "full_name": "Merge-Me-Test-Organisation/merge-me-test",
+      "owner": {
+        "login": "Merge-Me-Test-Organisation",
+        "type": "Organization"
+      },
+      "size": 16,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "forks_count": 0,
+      "open_issues_count": 1,
+      "forks": 0,
+      "open_issues": 1,
+      "watchers": 0,
+      "default_branch": "master"
+    },
+    "organization": {
+      "login": "Merge-Me-Test-Organisation"
+    }
+  }
+}

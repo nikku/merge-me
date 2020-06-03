@@ -1,0 +1,26 @@
+{
+  "name": "repos.getCombinedStatusForRef",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-Organisation",
+    "repo": "merge-me-test",
+    "ref": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+    "headers": {}
+  },
+  "result": {
+    "data": {
+      "state": "pending",
+      "statuses": [],
+      "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+      "total_count": 0,
+      "repository": {
+        "name": "merge-me-test",
+        "full_name": "Merge-Me-Test-Organisation/merge-me-test",
+        "owner": {
+          "login": "Merge-Me-Test-Organisation",
+          "type": "Organization"
+        }
+      }
+    }
+  }
+}

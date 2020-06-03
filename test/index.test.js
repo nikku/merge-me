@@ -180,5 +180,24 @@ describe('bot', function() {
       // then
       await recording.replay();
     });
+
+
+    it('should consider reviewTeams config', async function() {
+
+      // in this test, following configuration exists:
+      //
+      // reviewTeams:
+      // - dev
+      // - design
+
+      // one person from the dev team approves, then another person from the
+      // design team approves
+
+      // given
+      const recording = loadRecording('team-reviews');
+
+      // then
+      await recording.replay();
+    });
   });
 });

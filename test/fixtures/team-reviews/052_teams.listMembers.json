@@ -1,0 +1,21 @@
+{
+  "name": "teams.listMembers",
+  "type": "api-call",
+  "args": {
+    "org": "Merge-Me-Test-Organisation",
+    "team_id": 3861522,
+    "headers": {}
+  },
+  "result": {
+    "data": [
+      {
+        "login": "oguzeroglu",
+        "type": "User"
+      },
+      {
+        "login": "notoguz2",
+        "type": "User"
+      }
+    ]
+  }
+}

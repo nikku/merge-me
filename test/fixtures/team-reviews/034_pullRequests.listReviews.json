@@ -1,0 +1,13 @@
+{
+  "name": "pullRequests.listReviews",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-Organisation",
+    "repo": "merge-me-test",
+    "number": 12,
+    "headers": {}
+  },
+  "result": {
+    "data": []
+  }
+}
