@@ -107,14 +107,13 @@ describe('bot', function() {
       });
 
 
-      it('people in multiple teams', async function() {
+      it('user in multiple teams', async function() {
 
         // Scenario:
         //
         // reviewTeams:
         //   - dev (a, b)
         //   - design (a, b, c)
-        //   - other (d)
         //
         // [a] opens a pull request
         // [c] approves
@@ -125,7 +124,7 @@ describe('bot', function() {
         // the approval of [b] is counted as dev approval rather than design approval.
 
         // given
-        const recording = loadRecording('review_teams_multi_team');
+        const recording = loadRecording('review_teams_user_in_multiple_teams');
 
         // then
         await recording.replay();
