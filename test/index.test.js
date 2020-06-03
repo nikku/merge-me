@@ -67,108 +67,72 @@ describe('bot', function() {
 
   describe('reviews', function() {
 
-    it('should consider minApprovals config', async function() {
 
-      // in this test following YML configuration is returned within
-      // repos.getContents.json files (encoded in Base64):
-      //    minApprovals: 2
-      //
-      // listReviews API call returns 2 approved reviews.
-
-      // given
-      const recording = loadRecording('with_minapprovals_config');
-
-      // then
-      await recording.replay();
-    });
+    // in this test following YML configuration is returned within
+    // repos.getContents.json files (encoded in Base64):
+    //    minApprovals: 2
+    //
+    // listReviews API call returns 2 approved reviews.
+    //
+    it('should consider minApprovals config', test('with_minapprovals_config'));
 
 
     describe('should consider reviewTeams config', function() {
 
-      // for team reviews tests, following YML configuration is returned within
-      // repos.getContents.json files (encided in Base64):
+      // Scenario:
       //
       // reviewTeams:
-      // - dev
-      // - design
-
-      it('simple scenario', async function() {
-
-        // Scenario:
-        // One person from dev team approves.
-        // One person from design team approves.
-        // PR is merged.
-
-        // given
-        const recording = loadRecording('review_teams_simple');
-
-        // then
-        await recording.replay();
-      });
+      //   - dev (a, b)
+      //   - design (a, c)
+      //
+      // One person from dev team approves.
+      // One person from design team approves.
+      // PR is merged.
+      //
+      it('simple scenario', test('review_teams_simple'));
 
 
-      it('user in multiple teams', async function() {
-
-        // Scenario:
-        //
-        // reviewTeams:
-        //   - dev (a, b)
-        //   - design (a, b, c)
-        //
-        // [a] opens a pull request
-        // [c] approves
-        // [b] approves
-        // PR gets merged.
-        //
-        // Since dev is configured before design inside the YAML file,
-        // the approval of [b] is counted as dev approval rather than design approval.
-
-        // given
-        const recording = loadRecording('review_teams_user_in_multiple_teams');
-
-        // then
-        await recording.replay();
-      });
+      // Scenario:
+      //
+      // reviewTeams:
+      //   - dev (a, b)
+      //   - design (a, b, c)
+      //
+      // [a] opens a pull request
+      // [c] approves
+      // [b] approves
+      // PR gets merged.
+      //
+      // Since dev is configured before design inside the YAML file,
+      // the approval of [b] is counted as dev approval rather than design approval.
+      //
+      it('user in multiple teams', test('review_teams_user_in_multiple_teams'));
 
 
-      it('missing team review approval', async function() {
-
-        // Scenario:
-        //
-        // reviewTeams:
-        //   - dev (a, b, c)
-        //   - design (d)
-        //
-        // a opens a pull request.
-        // a asks for a review from b, c and d.
-        // b and c approves -> no merge. (design approval is missing).
-
-        // given
-        const recording = loadRecording('review_teams_approval_missing');
-
-        // then
-        await recording.replay();
-      });
+      // Scenario:
+      //
+      // reviewTeams:
+      //   - dev (a, b, c)
+      //   - design (d)
+      //
+      // a opens a pull request.
+      // a asks for a review from b, c and d.
+      // b and c approves -> no merge. (design approval is missing).
+      //
+      it('missing team review approval', test('review_teams_approval_missing'));
 
 
-      it('rejected review', async function() {
-
-        // Scenario
-        //
-        // reviewTeams:
-        //   - dev (a, b)
-        //   - design (c, d)
-        //
-        // PR is opened. Review is requested from a, b and c.
-        //
-        // b and c approves, however a rejects -> No merge.
-
-        // given
-        const recording = loadRecording('review_teams_with_rejects');
-
-        // then
-        await recording.replay();
-      });
+      // Scenario
+      //
+      // reviewTeams:
+      //   - dev (a, b)
+      //   - design (c, d)
+      //
+      // PR is opened. Review is requested from a, b and c.
+      //
+      // b and c approves, however a rejects -> No merge.
+      //
+      it('rejected review', test('review_teams_with_rejects'));
 
     });
 
