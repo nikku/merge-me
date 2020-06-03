@@ -128,6 +128,25 @@ describe('bot', function() {
         // then
         await recording.replay();
       });
+
+
+      it('should not merge unless there are approvals from each configured team', async function() {
+
+        // Scenario:
+        //
+        // dev: a, b, c
+        // design: d
+        //
+        // a opens a pull request.
+        // a asks for a review from b, c and d.
+        // b and c approves -> no merge. (design approval is missing).
+
+        // given
+        const recording = loadRecording('review_teams_approval_missing');
+
+        // then
+        await recording.replay();
+      });
     });
   });
 });
