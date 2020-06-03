@@ -147,6 +147,25 @@ describe('bot', function() {
         // then
         await recording.replay();
       });
+
+
+      it('should not merge is there are rejected reviews', async function() {
+
+        // Scenario
+        //
+        // design: a, b
+        // dev: c, d
+        //
+        // PR is opened. Review is requested from a, b and c.
+        //
+        // b and c approves, however a rejects -> No merge.
+
+        // given
+        const recording = loadRecording('review_teams_with_rejects');
+
+        // then
+        await recording.replay();
+      });
     });
   });
 });
