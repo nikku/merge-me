@@ -202,6 +202,41 @@ function ReplayingGithub(recording) {
 
       recording.trace(`invoking <${ApiCall(recordName)}>`, actualArgs);
 
+      // authenticated event check, fired by recent
+      // versions of Probot once in a while
+      if (isAuthenticationCheck(recordName, actualArgs)) {
+        return {
+          data: {
+            id: 1,
+            slug: 'merge-me',
+            owner: {
+              login: 'nikku'
+            },
+            permissions: {
+              administration: 'read',
+              checks: 'read',
+              contents: 'write',
+              pull_requests: 'write',
+              statuses: 'read',
+              members: 'read'
+            },
+            events: [
+              'pull_request',
+              'check_suite',
+              'pull_request_review',
+              'status'
+            ]
+          }
+        };
+      }
+
+      // fallback config to retrieve .github/merge-me.yml file
+      // from .github repository
+      if (isGithubDefaultConfigFetch(recordName, actualArgs)) {
+        throw Object.assign(new Error('recorded error'), { status: 404 });
+      }
+
+
       // assume there is a next entry
       const entry = recording.pop();
 
@@ -261,6 +296,14 @@ function ReplayingGithub(recording) {
     }
   });
 
+}
+
+function isAuthenticationCheck(recordName, args) {
+  return recordName === 'apps.getAuthenticated';
+}
+
+function isGithubDefaultConfigFetch(recordName, args) {
+  return recordName === 'repos.getContents' && args.repo === '.github';
 }
 
 module.exports = {
