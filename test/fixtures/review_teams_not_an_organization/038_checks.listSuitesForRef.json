@@ -1,0 +1,107 @@
+{
+  "name": "checks.listSuitesForRef",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-User",
+    "repo": "merge-me-test",
+    "ref": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6"
+  },
+  "result": {
+    "data": {
+      "total_count": 3,
+      "check_suites": [
+        {
+          "head_branch": "test-test",
+          "head_sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "status": "queued",
+          "before": "29f5936b763a27b8703699e18f4d0f4a0e37ddbf",
+          "after": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "pull_requests": [
+            {
+              "number": 12,
+              "head": {
+                "ref": "test-test",
+                "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+                "repo": {
+                  "name": "merge-me-test"
+                }
+              },
+              "base": {
+                "ref": "master",
+                "sha": "c97fa52a39aee73230b98a5faea7f27cadb0acc4",
+                "repo": {
+                  "name": "merge-me-test"
+                }
+              }
+            }
+          ],
+          "app": {
+            "slug": "merge-me-test-app2",
+            "owner": {
+              "login": "Merge-Me-Test-User",
+              "type": "User"
+            },
+            "name": "merge-me-test-app2"
+          },
+          "latest_check_runs_count": 0,
+          "head_commit": {
+            "tree_id": "51fcf48eb13bbff985dc6662d6043e03271ac1a4",
+            "message": "feat: test2",
+            "timestamp": "2020-05-28T08:47:11Z",
+            "author": {
+              "name": "Oguz"
+            },
+            "committer": {
+              "name": "Oguz"
+            }
+          },
+          "repository": {
+            "name": "merge-me-test",
+            "full_name": "Merge-Me-Test-User/merge-me-test",
+            "owner": {
+              "login": "Merge-Me-Test-User",
+              "type": "User"
+            }
+          }
+        },
+        {
+          "head_branch": "test-test",
+          "head_sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "status": "completed",
+          "conclusion": "success",
+          "before": "29f5936b763a27b8703699e18f4d0f4a0e37ddbf",
+          "after": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+          "pull_requests": [],
+          "app": {
+            "slug": "travis-ci",
+            "owner": {
+              "login": "travis-ci",
+              "type": "Organization"
+            },
+            "name": "Travis CI"
+          },
+          "latest_check_runs_count": 2,
+          "head_commit": {
+            "tree_id": "51fcf48eb13bbff985dc6662d6043e03271ac1a4",
+            "message": "feat: test2",
+            "timestamp": "2020-05-28T08:47:11Z",
+            "author": {
+              "name": "Oguz"
+            },
+            "committer": {
+              "name": "Oguz"
+            }
+          },
+          "repository": {
+            "name": "merge-me-test",
+            "full_name": "Merge-Me-Test-User/merge-me-test",
+            "owner": {
+              "login": "Merge-Me-Test-User",
+              "type": "User"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

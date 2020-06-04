@@ -150,6 +150,16 @@ describe('bot', function() {
       //
       it('rejected review', test('review_teams_with_rejects'));
 
+
+      // Scenario
+      //
+      // * reviewTeams configured
+      // * not an organization
+      //
+      // => basic merge rules apply
+      //
+      it('no organization target', test('review_teams_not_an_organization'));
+
     });
 
   });
