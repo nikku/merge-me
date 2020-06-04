@@ -54,7 +54,7 @@ Teams to account for when checking for approvals. This option is enabled for org
 
 If `reviewTeams` is specified the bot will check for approvals per team that is involved in the PR. To do this, it deduces the effective teams to account for from existing and requested reviewers and their team memberships.
 
-If any effective review team is missing the required amount of _minApprovals_ merging of the PR is rejected.
+If any effective review team is missing the required amount of `minApprovals` merging of the PR is rejected.
 
 ##### Example
 
