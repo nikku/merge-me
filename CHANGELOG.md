@@ -13,7 +13,7 @@ ___Note:__ Yet to be released changes appear here._
 * `CHORE`: various debug logging improvements
 * `CHORE`: update to `probot@9.11`
 
-BREAKING CHANGES:
+### BREAKING CHANGES:
 
 * Now requires the `members: read` permission in order to execute per-team approval checks.
 
