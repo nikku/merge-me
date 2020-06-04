@@ -38,9 +38,9 @@ class Recording {
   /**
    * Trace log given message
    */
-  trace(msg) {
+  trace(msg, ...rest) {
     if (this.debug) {
-      console.debug(msg);
+      console.debug(msg, ...rest);
     }
   }
 
@@ -73,7 +73,7 @@ class Recording {
     if (!this.debug) {
       app.log = () => {};
       app.log.child = () => app.log;
-      app.log.error = app.log.debug = app.log;
+      app.log.error = app.log.debug = app.log.warn = app.log.trace = app.log;
     }
 
     const logError = app.log.error;
@@ -137,6 +137,8 @@ class Recording {
         name,
         payload
       });
+
+      this.trace(`replayed <${Entry(type, name)}> ${File(file)}`);
     }
 
   }
@@ -197,6 +199,8 @@ function ReplayingGithub(recording) {
     const recordName = `${handlerName}.${methodName}`;
 
     return async function(actualArgs) {
+
+      recording.trace(`invoking <${ApiCall(recordName)}>`, actualArgs);
 
       // assume there is a next entry
       const entry = recording.pop();
