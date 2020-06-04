@@ -3,16 +3,12 @@
   "type": "api-call",
   "args": {
     "org": "Merge-Me-Test-Organisation",
-    "team_id": 1
+    "team_id": 2
   },
   "result": {
     "data": [
       {
         "login": "oguzeroglu",
-        "type": "User"
-      },
-      {
-        "login": "notoguz",
         "type": "User"
       },
       {

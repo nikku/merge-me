@@ -3,7 +3,7 @@
   "type": "api-call",
   "args": {
     "org": "Merge-Me-Test-Organisation",
-    "team_id": 1
+    "team_id": 2
   },
   "result": {
     "data": [
@@ -12,7 +12,11 @@
         "type": "User"
       },
       {
-        "login": "notoguz2",
+        "login": "notoguz",
+        "type": "User"
+      },
+      {
+        "login": "notoguz3",
         "type": "User"
       }
     ]
