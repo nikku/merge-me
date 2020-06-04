@@ -8,7 +8,7 @@ ___Note:__ Yet to be released changes appear here._
 
 ## 0.6.0
 
-* `FEAT`: add ability to account for per-team approval checks ([#https://github.com/nikku/merge-me/pull/13](https://github.com/nikku/merge-me/pull/13))
+* `FEAT`: add ability to account for per-team approval checks ([#13](https://github.com/nikku/merge-me/pull/13))
 * `FEAT`: search for default configuration in `.github` repository, too
 * `CHORE`: various debug logging improvements
 * `CHORE`: update to `probot@9.11`
