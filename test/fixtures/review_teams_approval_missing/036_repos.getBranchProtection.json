@@ -10,6 +10,6 @@
     "error": {
       "name": "HttpError",
       "status": 404
-     }
+    }
   }
 }

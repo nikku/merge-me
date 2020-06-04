@@ -40,14 +40,6 @@
             "login": "nikku",
             "type": "User"
           },
-          "size": 0,
-          "stargazers_count": 0,
-          "watchers_count": 0,
-          "forks_count": 0,
-          "open_issues_count": 1,
-          "forks": 0,
-          "open_issues": 1,
-          "watchers": 0,
           "default_branch": "master"
         }
       },
@@ -66,14 +58,6 @@
             "login": "nikku",
             "type": "User"
           },
-          "size": 0,
-          "stargazers_count": 0,
-          "watchers_count": 0,
-          "forks_count": 0,
-          "open_issues_count": 1,
-          "forks": 0,
-          "open_issues": 1,
-          "watchers": 0,
           "default_branch": "master"
         }
       },
@@ -86,14 +70,6 @@
         "login": "nikku",
         "type": "User"
       },
-      "size": 0,
-      "stargazers_count": 0,
-      "watchers_count": 0,
-      "forks_count": 0,
-      "open_issues_count": 1,
-      "forks": 0,
-      "open_issues": 1,
-      "watchers": 0,
       "default_branch": "master"
     }
   }

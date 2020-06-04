@@ -57,14 +57,6 @@
         "login": "Merge-Me-Test-Organisation",
         "type": "Organization"
       },
-      "size": 16,
-      "stargazers_count": 0,
-      "watchers_count": 0,
-      "forks_count": 0,
-      "open_issues_count": 1,
-      "forks": 0,
-      "open_issues": 1,
-      "watchers": 0,
       "default_branch": "master"
     },
     "organization": {
