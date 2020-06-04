@@ -31,6 +31,39 @@ In the absence of [branch protection rules](https://help.github.com/articles/abo
 * There exists at least a single approved review
 * No reviewer requested changes
 
+Rules may be overridden / fine tuned with [additional configuration](#configuration).
+
+
+## Configuration
+
+The bot can be configured by placing a `.github/merge-me.yml` file into your repository. 
+
+### `minApprovals=1`
+
+The amount of approvals required in order to merge a PR. Defaults to `1`, will always be at least `1` for external contributions.
+
+#### Example
+
+```yml
+minApprovals: 2
+```
+
+### `reviewTeams`
+
+Teams to account for when checking for approvals. This option is enabled for organizational repositories only and requires the `members` permission.
+
+If `reviewTeams` is specified the bot will check for approvals per team that is involved in the PR. To do this, it deduces the effective teams to account for from existing and requested reviewers and their team memberships.
+
+If any effective review team is missing the required amount of _minApprovals_ merging of the PR is rejected.
+
+#### Example
+
+```yml
+reviewTeams:
+- design
+- development
+```
+
 
 ## Related
 
