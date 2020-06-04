@@ -38,17 +38,17 @@ Rules may be overridden / fine tuned with [additional configuration](#configurat
 
 The bot can be configured by placing a `.github/merge-me.yml` file into your repository. 
 
-### `minApprovals=1`
+#### `minApprovals=1`
 
 The amount of approvals required in order to merge a PR. Defaults to `1`, will always be at least `1` for external contributions.
 
-#### Example
+##### Example
 
 ```yml
 minApprovals: 2
 ```
 
-### `reviewTeams`
+#### `reviewTeams`
 
 Teams to account for when checking for approvals. This option is enabled for organizational repositories only and requires the `members` permission.
 
@@ -56,7 +56,7 @@ If `reviewTeams` is specified the bot will check for approvals per team that is 
 
 If any effective review team is missing the required amount of _minApprovals_ merging of the PR is rejected.
 
-#### Example
+##### Example
 
 ```yml
 reviewTeams:
