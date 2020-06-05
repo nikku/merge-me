@@ -4,7 +4,7 @@
   "args": {
     "owner": "Merge-Me-Test-User",
     "repo": "merge-me-test",
-    "number": 12,
+    "pull_number": 12,
     "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
     "merge_method": "rebase"
   },

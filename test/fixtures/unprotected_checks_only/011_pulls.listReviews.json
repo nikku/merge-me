@@ -4,7 +4,7 @@
   "args": {
     "owner": "nikku",
     "repo": "testtest-checks",
-    "number": 1
+    "pull_number": 1
   },
   "result": {
     "data": []

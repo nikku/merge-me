@@ -4,7 +4,7 @@
   "args": {
     "owner": "nikku",
     "repo": "testtest-checks",
-    "number": 1,
+    "pull_number": 1,
     "sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
     "merge_method": "rebase"
   },
