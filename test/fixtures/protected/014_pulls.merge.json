@@ -1,0 +1,16 @@
+{
+  "name": "pulls.merge",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "number": 23,
+    "sha": "329dc8801f6da722d6ac9420e142f59aa610916f",
+    "merge_method": "rebase"
+  },
+  "result": {
+    "error": {
+      "status": 405
+    }
+  }
+}

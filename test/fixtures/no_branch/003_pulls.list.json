@@ -1,0 +1,13 @@
+{
+  "name": "pulls.list",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "ref": "testtest:master",
+    "state": "open"
+  },
+  "result": {
+    "data": []
+  }
+}

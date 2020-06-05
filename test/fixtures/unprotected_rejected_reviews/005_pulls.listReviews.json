@@ -1,0 +1,29 @@
+{
+  "name": "pulls.listReviews",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "number": 29
+  },
+  "result": {
+    "data": [
+      {
+        "user": {
+          "login": "mike"
+        },
+        "state": "CHANGES_REQUESTED",
+        "commit_id": "53e4600f2c01d18a8005f0f3e857c701fed8a9e0"
+      },
+      {
+        "user": {
+          "login": "waltaaa",
+          "type": "User"
+        },
+        "state": "APPROVED",
+        "author_association": "COLLABORATOR",
+        "commit_id": "53e4600f2c01d18a8005f0f3e857c701fed8a9e0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "pulls.merge",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-Organisation",
+    "repo": "merge-me-test",
+    "number": 12,
+    "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+    "merge_method": "rebase"
+  },
+  "result": {
+    "data": {
+      "sha": "de6823ae07b63a7ba4e263f3f9cba7ce015ae650",
+      "merged": true,
+      "message": "Pull Request successfully merged"
+    }
+  }
+}
