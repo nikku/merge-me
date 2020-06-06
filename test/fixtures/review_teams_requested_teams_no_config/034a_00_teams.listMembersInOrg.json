@@ -1,0 +1,16 @@
+{
+  "name": "teams.listMembersInOrg",
+  "type": "api-call",
+  "args": {
+    "org": "Merge-Me-Test-Organisation",
+    "team_slug": "outside"
+  },
+  "result": {
+    "data": [
+      {
+        "login": "outsider",
+        "type": "User"
+      }
+    ]
+  }
+}

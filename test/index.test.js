@@ -153,6 +153,23 @@ describe('bot', function() {
 
       // Scenario
       //
+      // * reviewTeams:
+      //    - dev (a)
+      // * PR has requested_team={ slug: 'outsider' }
+      //
+      it('requested teams', test('review_teams_requested_teams'));
+
+
+      // Scenario
+      //
+      // * no reviewTeams config
+      // * PR has requested_team={ slug: 'outsider' }
+      //
+      it('requested teams / no config', test('review_teams_requested_teams_no_config'));
+
+
+      // Scenario
+      //
       // * reviewTeams configured
       // * not an organization
       //
