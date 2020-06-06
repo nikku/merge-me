@@ -1,14 +1,18 @@
 {
-  "name": "teams.listMembers",
+  "name": "teams.listMembersInOrg",
   "type": "api-call",
   "args": {
     "org": "Merge-Me-Test-Organisation",
-    "team_id": 3
+    "team_slug": "dev"
   },
   "result": {
     "data": [
       {
-        "login": "freddy",
+        "login": "oguzeroglu",
+        "type": "User"
+      },
+      {
+        "login": "notoguz2",
         "type": "User"
       }
     ]

@@ -1,9 +1,9 @@
 {
-  "name": "teams.listMembers",
+  "name": "teams.listMembersInOrg",
   "type": "api-call",
   "args": {
     "org": "Merge-Me-Test-Organisation",
-    "team_id": 2
+    "team_slug": "dev"
   },
   "result": {
     "data": [
