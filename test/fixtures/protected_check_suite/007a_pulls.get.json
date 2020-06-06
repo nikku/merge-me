@@ -1,0 +1,74 @@
+{
+  "name": "pulls.get",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "pull_number": 24
+  },
+  "result": {
+    "data": {
+      "number": 24,
+      "state": "open",
+      "title": "Update README.md",
+      "user": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "merge_commit_sha": "95c0d3cb1d9f780ae8bf8c9a1f32529061ff6b6f",
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [],
+      "draft": false,
+      "head": {
+        "label": "nikku:nikku-patch-1",
+        "ref": "nikku-patch-1",
+        "sha": "4b10a44fa7652f05c61bd18f7e5a7c7e451e093f",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 5,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "nikku:master",
+        "ref": "master",
+        "sha": "3b5849c4f95ab6af5c664bc5a67fcea0bf7f7ecf",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "size": 5,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "CONTRIBUTOR",
+      "merged": false,
+      "rebaseable": true,
+      "mergeable_state": "clean",
+      "comments": 0,
+      "review_comments": 0,
+      "commits": 3,
+      "additions": 2,
+      "deletions": 0,
+      "changed_files": 1
+    }
+  }
+}
