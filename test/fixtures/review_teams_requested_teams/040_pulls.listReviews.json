@@ -1,0 +1,31 @@
+{
+  "name": "pulls.listReviews",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-Organisation",
+    "repo": "merge-me-test",
+    "pull_number": 12
+  },
+  "result": {
+    "data": [
+      {
+        "user": {
+          "login": "notoguz2",
+          "type": "User"
+        },
+        "state": "APPROVED",
+        "author_association": "MEMBER",
+        "commit_id": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6"
+      },
+      {
+        "user": {
+          "login": "outsider",
+          "type": "User"
+        },
+        "commit_id": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+        "state": "APPROVED",
+        "author_association": "NONE"
+      }
+    ]
+  }
+}

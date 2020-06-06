@@ -1,33 +1,47 @@
 {
-  "name": "pull_request.synchronize",
+  "name": "pull_request_review.submitted",
   "type": "event",
   "payload": {
-    "action": "synchronize",
-    "number": 12,
+    "action": "submitted",
+    "review": {
+      "user": {
+        "login": "outsider",
+        "type": "User"
+      },
+      "commit_id": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+      "state": "approved",
+      "author_association": "NONE"
+    },
     "pull_request": {
       "number": 12,
       "state": "open",
-      "title": "Update test.txt",
+      "title": "feat: test",
       "user": {
-        "login": "oguz",
+        "login": "oguzeroglu",
         "type": "User"
       },
-      "merge_commit_sha": "ddf7426cc44392a09f9cbd80552ecf842ab76ca6",
+      "merge_commit_sha": "fb6bd8d36aaa8bd88d51feee985ed6d10e311520",
       "assignees": [],
-      "requested_reviewers": [],
+      "requested_reviewers": [
+        {
+          "login": "notoguz2",
+          "type": "User"
+        }
+      ],
       "requested_teams": [
         {
           "slug": "outside"
         }
       ],
       "labels": [],
+      "draft": false,
       "head": {
-        "label": "merge-me-test:test-test",
+        "label": "Merge-Me-Test-Organisation:test-test",
         "ref": "test-test",
         "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
         "user": {
-          "login": "nikku",
-          "type": "User"
+          "login": "Merge-Me-Test-Organisation",
+          "type": "Organization"
         },
         "repo": {
           "name": "merge-me-test",
@@ -40,12 +54,12 @@
         }
       },
       "base": {
-        "label": "merge-me-test:master",
+        "label": "Merge-Me-Test-Organisation:master",
         "ref": "master",
         "sha": "c97fa52a39aee73230b98a5faea7f27cadb0acc4",
         "user": {
-          "login": "nikku",
-          "type": "User"
+          "login": "Merge-Me-Test-Organisation",
+          "type": "Organization"
         },
         "repo": {
           "name": "merge-me-test",
@@ -57,18 +71,8 @@
           "default_branch": "master"
         }
       },
-      "author_association": "COLLABORATOR",
-      "mergeable_state": "unknown",
-      "draft": false,
-      "comments": 0,
-      "review_comments": 0,
-      "commits": 2,
-      "additions": 2,
-      "deletions": 0,
-      "changed_files": 1
+      "author_association": "MEMBER"
     },
-    "before": "3831781b1c99d53a22dff46de4da83c4640916da",
-    "after": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
     "repository": {
       "name": "merge-me-test",
       "full_name": "Merge-Me-Test-Organisation/merge-me-test",
@@ -77,6 +81,9 @@
         "type": "Organization"
       },
       "default_branch": "master"
+    },
+    "organization": {
+      "login": "Merge-Me-Test-Organisation"
     }
   }
 }
