@@ -1,9 +1,9 @@
 {
-  "name": "teams.listMembers",
+  "name": "teams.listMembersInOrg",
   "type": "api-call",
   "args": {
     "org": "Merge-Me-Test-Organisation",
-    "team_id": 1
+    "team_slug": "design"
   },
   "result": {
     "data": [
@@ -12,7 +12,7 @@
         "type": "User"
       },
       {
-        "login": "notoguz",
+        "login": "notoguz2",
         "type": "User"
       }
     ]
