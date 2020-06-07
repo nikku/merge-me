@@ -6,6 +6,10 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.9.0
+
+* `FEAT`: run on `pull_request.ready_for_review` event
+
 ## 0.8.0
 
 _Republish of `v0.8.0`. Thanks `npm`._
