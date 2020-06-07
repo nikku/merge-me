@@ -1,0 +1,20 @@
+{
+  "name": "teams.listMembersInOrg",
+  "type": "api-call",
+  "args": {
+    "org": "merge-me-test-org",
+    "team_slug": "dev"
+  },
+  "result": {
+    "data": [
+      {
+        "login": "nikku",
+        "type": "User"
+      },
+      {
+        "login": "waltaaa",
+        "type": "User"
+      }
+    ]
+  }
+}

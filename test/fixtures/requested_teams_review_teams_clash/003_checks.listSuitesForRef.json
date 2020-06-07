@@ -1,0 +1,91 @@
+{
+  "name": "checks.listSuitesForRef",
+  "type": "api-call",
+  "args": {
+    "owner": "merge-me-test-org",
+    "repo": "testtest-org",
+    "ref": "a6e7a70e3150b7c6f87a7ec47da918eafd72b5ec"
+  },
+  "result": {
+    "data": {
+      "total_count": 1,
+      "check_suites": [
+        {
+          "head_branch": "nikku-patch-1",
+          "head_sha": "a6e7a70e3150b7c6f87a7ec47da918eafd72b5ec",
+          "status": "completed",
+          "conclusion": "success",
+          "before": "8a8238929efbde62aa3d0901caddbabda5112a1a",
+          "after": "a6e7a70e3150b7c6f87a7ec47da918eafd72b5ec",
+          "pull_requests": [
+            {
+              "number": 1,
+              "head": {
+                "ref": "nikku-patch-1",
+                "sha": "a6e7a70e3150b7c6f87a7ec47da918eafd72b5ec",
+                "repo": {
+                  "name": "testtest-org"
+                }
+              },
+              "base": {
+                "ref": "master",
+                "sha": "3b5849c4f95ab6af5c664bc5a67fcea0bf7f7ecf",
+                "repo": {
+                  "name": "testtest-org"
+                }
+              }
+            }
+          ],
+          "app": {
+            "slug": "travis-ci",
+            "owner": {
+              "login": "travis-ci",
+              "type": "Organization"
+            },
+            "name": "Travis CI",
+            "permissions": {
+              "checks": "write",
+              "contents": "read",
+              "deployments": "write",
+              "members": "read",
+              "metadata": "read",
+              "pull_requests": "read",
+              "repository_hooks": "write",
+              "statuses": "write"
+            },
+            "events": [
+              "check_run",
+              "check_suite",
+              "create",
+              "delete",
+              "member",
+              "pull_request",
+              "push",
+              "repository"
+            ]
+          },
+          "latest_check_runs_count": 1,
+          "head_commit": {
+            "tree_id": "af52d76ade189511377ae7003119d40b26a21808",
+            "message": "Update README.md",
+            "timestamp": "2020-06-06T20:56:23Z",
+            "author": {
+              "name": "Nico Rehwaldt"
+            },
+            "committer": {
+              "name": "GitHub"
+            }
+          },
+          "repository": {
+            "name": "testtest-org",
+            "full_name": "merge-me-test-org/testtest-org",
+            "owner": {
+              "login": "merge-me-test-org",
+              "type": "Organization"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -93,6 +93,14 @@ describe('bot', function() {
       //
       it('no reviewTeams', test('requested_teams_no_review_teams'));
 
+
+      // Scenario
+      //
+      // * reviewTeams=[dev, design]
+      // * requested_teams=[dev]
+      //
+      it('handling conflict with review team', test('requested_teams_review_teams_clash'));
+
     });
 
 

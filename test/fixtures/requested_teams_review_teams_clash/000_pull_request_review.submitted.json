@@ -1,0 +1,95 @@
+{
+  "name": "pull_request_review.submitted",
+  "type": "event",
+  "payload": {
+    "action": "submitted",
+    "review": {
+      "user": {
+        "login": "michaaaaaaaaa",
+        "type": "User"
+      },
+      "commit_id": "a6e7a70e3150b7c6f87a7ec47da918eafd72b5ec",
+      "state": "approved",
+      "author_association": "COLLABORATOR"
+    },
+    "pull_request": {
+      "number": 1,
+      "state": "open",
+      "title": "Update README.md",
+      "user": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "merge_commit_sha": "95c0d3cb1d9f780ae8bf8c9a1f32529061ff6b6f",
+      "assignees": [],
+      "requested_reviewers": [
+        {
+          "login": "waltaaa",
+          "type": "User"
+        }
+      ],
+      "requested_teams": [
+        {
+          "name": "dev",
+          "slug": "dev",
+          "privacy": "closed",
+          "permission": "pull"
+        }
+      ],
+      "labels": [],
+      "draft": false,
+      "head": {
+        "label": "merge-me-test-org:nikku-patch-1",
+        "ref": "nikku-patch-1",
+        "sha": "a6e7a70e3150b7c6f87a7ec47da918eafd72b5ec",
+        "user": {
+          "login": "merge-me-test-org",
+          "type": "Organization"
+        },
+        "repo": {
+          "name": "testtest-org",
+          "full_name": "merge-me-test-org/testtest-org",
+          "owner": {
+            "login": "merge-me-test-org",
+            "type": "Organization"
+          },
+          "size": 5,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "merge-me-test-org:master",
+        "ref": "master",
+        "sha": "3b5849c4f95ab6af5c664bc5a67fcea0bf7f7ecf",
+        "user": {
+          "login": "merge-me-test-org",
+          "type": "Organization"
+        },
+        "repo": {
+          "name": "testtest-org",
+          "full_name": "merge-me-test-org/testtest-org",
+          "owner": {
+            "login": "merge-me-test-org",
+            "type": "Organization"
+          },
+          "size": 5,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "CONTRIBUTOR"
+    },
+    "repository": {
+      "name": "testtest-org",
+      "full_name": "merge-me-test-org/testtest-org",
+      "owner": {
+        "login": "merge-me-test-org",
+        "type": "Organization"
+      },
+      "size": 5,
+      "default_branch": "master"
+    },
+    "organization": {
+      "login": "merge-me-test-org"
+    }
+  }
+}

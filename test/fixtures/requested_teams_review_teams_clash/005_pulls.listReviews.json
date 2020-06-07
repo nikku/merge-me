@@ -1,0 +1,22 @@
+{
+  "name": "pulls.listReviews",
+  "type": "api-call",
+  "args": {
+    "owner": "merge-me-test-org",
+    "repo": "testtest-org",
+    "pull_number": 1
+  },
+  "result": {
+    "data": [
+      {
+        "user": {
+          "login": "michaaaaaaaaa",
+          "type": "User"
+        },
+        "state": "APPROVED",
+        "author_association": "MEMBER",
+        "commit_id": "a6e7a70e3150b7c6f87a7ec47da918eafd72b5ec"
+      }
+    ]
+  }
+}
