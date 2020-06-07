@@ -1,0 +1,14 @@
+{
+  "name": "teams.listMembersInOrg",
+  "type": "api-call",
+  "args": {
+    "org": "Merge-Me-Test-User",
+    "team_slug": "dev"
+  },
+  "result": {
+    "error": {
+      "name": "HttpError",
+      "status": 404
+    }
+  }
+}
