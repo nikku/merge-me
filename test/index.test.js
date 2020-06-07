@@ -67,7 +67,6 @@ describe('bot', function() {
 
   describe('reviews', function() {
 
-
     // in this test following YML configuration is returned within
     // repos.getContents.json files (encoded in Base64):
     //    minApprovals: 2
@@ -75,6 +74,26 @@ describe('bot', function() {
     // listReviews API call returns 2 approved reviews.
     //
     it('should consider minApprovals config', test('with_minapprovals_config'));
+
+
+    describe('should consider pull_request.requested_teams', function() {
+
+      // Scenario
+      //
+      // * reviewTeams=[dev]
+      // * requested_teams=[outsider]
+      //
+      it('basic', test('requested_teams'));
+
+
+      // Scenario
+      //
+      // * reviewTeams=[]
+      // * requested_teams=[outsider]
+      //
+      it('no reviewTeams', test('requested_teams_no_review_teams'));
+
+    });
 
 
     describe('should consider reviewTeams config', function() {
@@ -149,23 +168,6 @@ describe('bot', function() {
       // b and c approves, however a rejects -> No merge.
       //
       it('rejected review', test('review_teams_with_rejects'));
-
-
-      // Scenario
-      //
-      // * reviewTeams:
-      //    - dev (a)
-      // * PR has requested_team={ slug: 'outsider' }
-      //
-      it('requested teams', test('review_teams_requested_teams'));
-
-
-      // Scenario
-      //
-      // * no reviewTeams config
-      // * PR has requested_team={ slug: 'outsider' }
-      //
-      it('requested teams / no config', test('review_teams_requested_teams_no_config'));
 
 
       // Scenario
