@@ -44,7 +44,7 @@
     "exec": "npm start",
     "watch": [
       ".env",
-      "."
+      "**/*.js"
     ]
   }
 }
