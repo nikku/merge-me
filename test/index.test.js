@@ -43,6 +43,13 @@ describe('bot', function() {
   });
 
 
+  describe('webhooks', function() {
+
+    it('should run on pull_request.ready_for_review', test('ready_for_review'));
+
+  });
+
+
   describe('general', function() {
 
     it('should skip already merged', test('skip_merged'));

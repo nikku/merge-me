@@ -1,0 +1,12 @@
+{
+  "name": "pulls.listReviews",
+  "type": "api-call",
+  "args": {
+    "owner": "merge-me-test-org",
+    "repo": "testtest-org",
+    "pull_number": 2
+  },
+  "result": {
+    "data": []
+  }
+}

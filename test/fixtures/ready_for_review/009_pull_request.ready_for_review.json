@@ -1,0 +1,84 @@
+{
+  "name": "pull_request.ready_for_review",
+  "type": "event",
+  "payload": {
+    "action": "ready_for_review",
+    "number": 2,
+    "pull_request": {
+      "number": 2,
+      "state": "open",
+      "title": "Update README.md",
+      "user": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "merge_commit_sha": "3515bb091d9a7b2f0c49420324141417189497c8",
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [],
+      "draft": false,
+      "head": {
+        "label": "merge-me-test-org:nikku-patch-1",
+        "ref": "nikku-patch-1",
+        "sha": "2d76a42c926d2ff519235b8b5bdd73eab65a29c4",
+        "user": {
+          "login": "merge-me-test-org",
+          "type": "Organization"
+        },
+        "repo": {
+          "name": "testtest-org",
+          "full_name": "merge-me-test-org/testtest-org",
+          "owner": {
+            "login": "merge-me-test-org",
+            "type": "Organization"
+          },
+          "size": 4,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "merge-me-test-org:master",
+        "ref": "master",
+        "sha": "7a12507f80b6002106414acf2e16f93f67944697",
+        "user": {
+          "login": "merge-me-test-org",
+          "type": "Organization"
+        },
+        "repo": {
+          "name": "testtest-org",
+          "full_name": "merge-me-test-org/testtest-org",
+          "owner": {
+            "login": "merge-me-test-org",
+            "type": "Organization"
+          },
+          "size": 4,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "CONTRIBUTOR",
+      "merged": false,
+      "rebaseable": true,
+      "mergeable_state": "clean",
+      "comments": 0,
+      "review_comments": 0,
+      "commits": 1,
+      "additions": 1,
+      "deletions": 1,
+      "changed_files": 1
+    },
+    "repository": {
+      "name": "testtest-org",
+      "full_name": "merge-me-test-org/testtest-org",
+      "owner": {
+        "login": "merge-me-test-org",
+        "type": "Organization"
+      },
+      "size": 4,
+      "default_branch": "master"
+    },
+    "organization": {
+      "login": "merge-me-test-org"
+    }
+  }
+}

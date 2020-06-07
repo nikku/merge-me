@@ -1,0 +1,15 @@
+{
+  "name": "repos.getBranchProtection",
+  "type": "api-call",
+  "args": {
+    "owner": "merge-me-test-org",
+    "repo": "testtest-org",
+    "branch": "master"
+  },
+  "result": {
+    "error": {
+      "name": "HttpError",
+      "status": 404
+    }
+  }
+}
