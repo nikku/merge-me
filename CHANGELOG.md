@@ -6,6 +6,13 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.7.0
+
+* `FEAT`: account for `requested_teams` set on a PR
+* `FEAT`: fail merge check if `reviewTeams` cannot be retrieved
+* `FIX`: fetch full PR to account for team reviews after `check_suite.completed` events
+* `CHORE`: remove unneeded listing of organizational teams
+
 ## 0.6.1
 
 * `CHORE`: log merge failure reason
