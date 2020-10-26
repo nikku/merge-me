@@ -1,0 +1,14 @@
+{
+  "name": "repos.checkCollaborator",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "username": "waltaaa"
+  },
+  "result": {
+    "error": {
+      "status": 404
+    }
+  }
+}

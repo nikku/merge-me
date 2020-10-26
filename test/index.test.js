@@ -35,6 +35,9 @@ describe('bot', function() {
     it('should not merge with rejected reviews', test('unprotected_rejected_reviews'));
 
 
+    it('should ignore non-collaborator review', test('unprotected_non_collaborator_review'));
+
+
     it('should handle missing status and checks', test('unprotected_no_status_checks'));
 
 
