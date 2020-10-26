@@ -4,7 +4,8 @@
   "args": {
     "owner": "nikku",
     "repo": "testtest",
-    "pull_number": 29
+    "pull_number": 29,
+    "per_page": 100
   },
   "result": {
     "data": [
