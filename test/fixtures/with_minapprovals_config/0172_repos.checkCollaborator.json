@@ -1,0 +1,10 @@
+{
+  "name": "repos.checkCollaborator",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest-checks",
+    "username": "oguzeroglu"
+  },
+  "result": {}
+}

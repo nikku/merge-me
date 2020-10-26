@@ -1,0 +1,10 @@
+{
+  "name": "repos.checkCollaborator",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-Organisation",
+    "repo": "merge-me-test",
+    "username": "notoguz3"
+  },
+  "result": {}
+}
