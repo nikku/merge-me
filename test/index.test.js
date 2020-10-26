@@ -209,6 +209,7 @@ describe('bot', function() {
 function test(recordingName) {
 
   return async function() {
+
     // given
     const recording = loadRecording(recordingName);
 
