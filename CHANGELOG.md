@@ -6,6 +6,11 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.10.0
+
+* `CHORE`: increase page size when fetching reviews
+* `FIX`: filter for collaborator reviews to decide review approvals
+
 ## 0.9.0
 
 * `FEAT`: run on `pull_request.ready_for_review` event
