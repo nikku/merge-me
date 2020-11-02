@@ -25,10 +25,10 @@ Consume as [GitHub app](https://github.com/apps/merge-me) or fork and deploy you
 
 In the absence of [branch protection rules](https://help.github.com/articles/about-protected-branches/) the app ensures a pull request meets the following conditions before merging:
 
-* There exists _at least one_ status check
+* _At least one_ status check exists
 * All status checks are _completed_
 * All status checks got the outcome _successful_ or _neutral_
-* There exists at least a single approved review
+* _At least one_ review approval by a repository collaborator exists
 * No reviewer requested changes
 
 Rules may be overridden / fine tuned with [additional configuration](#configuration).
