@@ -1,7 +1,10 @@
 .nyc_output
 coverage
 test
+tmp
+.env
+.env.example
 .eslintrc
 .eslintignore
-.env
 .travis.yml
+tsconfig.json
