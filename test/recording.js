@@ -2,11 +2,13 @@ const { expect } = require('chai');
 
 const path = require('path');
 
+const pino = require('pino');
+
 const fs = require('fs');
 
 const FIXTURE_BASE = `${__dirname}/fixtures`;
 
-const { Application } = require('probot');
+const { Probot } = require('probot');
 
 const MergeMe = require('..');
 
@@ -38,10 +40,8 @@ class Recording {
   /**
    * Trace log given message
    */
-  trace(msg, ...rest) {
-    if (this.debug) {
-      console.debug(msg, ...rest);
-    }
+  trace(...args) {
+    this.app.log(...args);
   }
 
   /**
@@ -63,22 +63,33 @@ class Recording {
    * Setup recording for replay.
    */
   setup() {
-    const github = ReplayingGithub(this);
 
-    const app = new Application();
-    app.auth = () => Promise.resolve(github);
+    const octokit = ReplayingOctokit(this);
+
+    const Octokit = {
+      defaults: () => {
+        return function Octokit() {
+          return octokit;
+        };
+      }
+    };
+
+    const log = pino(pino.destination({
+      write: (...args) => {
+        console.log(...args);
+      }
+    }));
+
+    const app = this.app = new Probot({
+      log,
+      Octokit
+    });
+
     app.load(MergeMe);
 
-    // disable logging unless debug is configured
-    if (!this.debug) {
-      app.log = () => {};
-      app.log.child = () => app.log;
-      app.log.error = app.log.debug = app.log.warn = app.log.trace = app.log;
-    }
+    const logError = log.error;
 
-    const logError = app.log.error;
-
-    app.log.error = (message, error, ...args) => {
+    log.error = (message, error, ...args) => {
 
       if (message instanceof Error) {
         error = message;
@@ -86,7 +97,7 @@ class Recording {
 
       this.lastError = error;
 
-      logError.call(app.log, message, error, ...args);
+      logError.call(log, message, error, ...args);
     };
 
     this.app = app;
@@ -192,7 +203,7 @@ function loadRecording(name) {
 
 // replay helpers //////////////////////////////
 
-function ReplayingGithub(recording) {
+function ReplayingOctokit(recording) {
 
   function ReplayingHandlerMethod(handlerName, methodName) {
 
@@ -235,7 +246,6 @@ function ReplayingGithub(recording) {
       if (isGithubDefaultConfigFetch(recordName, actualArgs)) {
         throw Object.assign(new Error('recorded error'), { status: 404 });
       }
-
 
       // assume there is a next entry
       const entry = recording.pop();
@@ -290,12 +300,25 @@ function ReplayingGithub(recording) {
 
   }
 
-  return new Proxy({}, {
-    get: function(target, prop) {
+  const proxy = new Proxy({}, {
+    get: function(target, prop, receiver) {
+
+      // to support Promise.resolve(proxy);
+      if (prop === 'then') {
+        return;
+      }
+
+      if (prop === 'auth') {
+        return function(...args) {
+          return Promise.resolve(proxy);
+        };
+      }
+
       return new ReplayingHandler(prop);
     }
   });
 
+  return proxy;
 }
 
 function isAuthenticationCheck(recordName, args) {
