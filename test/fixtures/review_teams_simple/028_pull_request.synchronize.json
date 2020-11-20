@@ -61,7 +61,10 @@
       "commits": 2,
       "additions": 2,
       "deletions": 0,
-      "changed_files": 1
+      "changed_files": 1,
+      "rebaseable": true,
+      "mergeable": true,
+      "merged": false
     },
     "before": "3831781b1c99d53a22dff46de4da83c4640916da",
     "after": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",

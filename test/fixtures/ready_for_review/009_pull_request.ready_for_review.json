@@ -65,7 +65,8 @@
       "commits": 1,
       "additions": 1,
       "deletions": 1,
-      "changed_files": 1
+      "changed_files": 1,
+      "mergeable": true
     },
     "repository": {
       "name": "testtest-org",
