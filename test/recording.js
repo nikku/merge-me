@@ -211,6 +211,10 @@ function ReplayingOctokit(recording) {
 
     return async function(actualArgs) {
 
+      if (isConfigFetch(recordName)) {
+        actualArgs = omit(actualArgs, [ 'defaults' ]);
+      }
+
       recording.trace(`invoking <${ApiCall(recordName)}>`, actualArgs);
 
       // authenticated event check, fired by recent
@@ -276,7 +280,8 @@ function ReplayingOctokit(recording) {
 
       const {
         error,
-        data
+        data,
+        config
       } = result;
 
       if (error) {
@@ -284,7 +289,8 @@ function ReplayingOctokit(recording) {
       }
 
       return {
-        data
+        data,
+        config
       };
     };
 
@@ -321,12 +327,29 @@ function ReplayingOctokit(recording) {
   return proxy;
 }
 
+function isConfigFetch(recordName) {
+  return recordName === 'config.get';
+}
+
 function isAuthenticationCheck(recordName, args) {
   return recordName === 'apps.getAuthenticated';
 }
 
 function isGithubDefaultConfigFetch(recordName, args) {
   return recordName === 'repos.getContents' && args.repo === '.github';
+}
+
+function omit(obj, args) {
+
+  const clone = {
+    ...obj
+  };
+
+  args.forEach(a => {
+    delete clone[a];
+  });
+
+  return clone;
 }
 
 module.exports = {

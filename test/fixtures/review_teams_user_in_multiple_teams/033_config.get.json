@@ -1,0 +1,17 @@
+{
+  "name": "config.get",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-Organisation",
+    "repo": "merge-me-test",
+    "path": ".github/merge-me.yml"
+  },
+  "result": {
+    "config": {
+      "reviewTeams": [
+        "dev",
+        "design"
+      ]
+    }
+  }
+}
