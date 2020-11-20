@@ -14,11 +14,11 @@
     "probot-app"
   ],
   "scripts": {
-    "all": "run-s lint lint:type test-coverage",
+    "all": "run-s lint lint:types test-coverage",
     "dev": "nodemon",
     "start": "probot run ./index.js",
     "lint": "eslint .",
-    "lint:type": "tsc --pretty",
+    "lint:types": "tsc --pretty",
     "test": "LOG_LEVEL=debug mocha test/*",
     "test-coverage": "nyc -x=lib/recorder.js -x=test/recording.js --reporter=lcov --reporter=html --reporter=text mocha test/*",
     "auto-test": "nodemon --exec npm test"
