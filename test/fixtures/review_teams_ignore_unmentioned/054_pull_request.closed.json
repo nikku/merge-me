@@ -66,7 +66,9 @@
       "commits": 2,
       "additions": 2,
       "deletions": 0,
-      "changed_files": 2
+      "changed_files": 2,
+      "rebaseable": false,
+      "mergeable": false
     },
     "repository": {
       "name": "merge-me-test",

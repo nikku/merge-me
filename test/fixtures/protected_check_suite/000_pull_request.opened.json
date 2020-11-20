@@ -59,7 +59,11 @@
       "commits": 1,
       "additions": 1,
       "deletions": 0,
-      "changed_files": 1
+      "changed_files": 1,
+      "rebaseable": true,
+      "mergeable": true,
+      "merged": false,
+      "draft": false
     },
     "repository": {
       "name": "testtest",
