@@ -1,14 +1,14 @@
 {
-  "name": "repos.getContents",
+  "name": "config.get",
   "type": "api-call",
   "args": {
     "owner": "nikku",
-    "repo": "testtest",
+    "repo": "testtest-checks",
     "path": ".github/merge-me.yml"
   },
   "result": {
-    "error": {
-      "status": 404
+    "config": {
+      "minApprovals": 2
     }
   }
 }

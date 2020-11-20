@@ -1,5 +1,5 @@
 {
-  "name": "repos.getContents",
+  "name": "config.get",
   "type": "api-call",
   "args": {
     "owner": "Merge-Me-Test-Organisation",
@@ -7,9 +7,12 @@
     "path": ".github/merge-me.yml"
   },
   "result": {
-    "error": {
-      "name": "HttpError",
-      "status": 404
+    "config": {
+      "reviewTeams": [
+        "dev",
+        "design",
+        "other"
+      ]
     }
   }
 }

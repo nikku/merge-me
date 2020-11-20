@@ -1,5 +1,5 @@
 {
-  "name": "repos.getContents",
+  "name": "config.get",
   "type": "api-call",
   "args": {
     "owner": "nikku",
@@ -7,8 +7,6 @@
     "path": ".github/merge-me.yml"
   },
   "result": {
-    "error": {
-      "status": 404
-    }
+    "config": {}
   }
 }
