@@ -6,6 +6,10 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.11.1
+
+* `FIX`: correct correlation of status updates to (local) pull requests ([`563b5cc0`](https://github.com/nikku/merge-me/commit/563b5cc02beb725c03435409a9345a64b7c71a93))
+
 ## 0.11.0
 
 * `FIX`: correct cross-origin pull request check ([`d48ca873c`](https://github.com/nikku/merge-me/commit/d48ca873cc41f5f50e57f67e7d58d468b1f8708f))
