@@ -63,6 +63,16 @@ describe('bot', function() {
 
     it('should skip not rebaseable', test('skip_non_rebaseable'));
 
+
+    it('should skip not mergeable', test('skip_non_mergeable'));
+
+  });
+
+
+  describe('merge method', function() {
+
+    it('should recognize <merge>', test('merge_method_merge'));
+
   });
 
 
