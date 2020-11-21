@@ -1,0 +1,71 @@
+{
+  "name": "pulls.get",
+  "type": "api-call",
+  "args": {
+    "owner": "Merge-Me-Test-User",
+    "repo": "merge-me-test",
+    "pull_number": 12
+  },
+  "result": {
+    "data": {
+      "rebaseable": true,
+      "mergeable": true,
+      "merged": false,
+      "draft": false,
+      "number": 12,
+      "state": "open",
+      "title": "feat: test",
+      "user": {
+        "login": "oguzeroglu",
+        "type": "User"
+      },
+      "merge_commit_sha": "fb6bd8d36aaa8bd88d51feee985ed6d10e311520",
+      "assignees": [],
+      "requested_reviewers": [
+        {
+          "login": "notoguz",
+          "type": "User"
+        }
+      ],
+      "requested_teams": [],
+      "labels": [],
+      "head": {
+        "label": "Merge-Me-Test-User:test-test",
+        "ref": "test-test",
+        "sha": "f9d55a5bff002d1e17967c5edc1fa979b9c243d6",
+        "user": {
+          "login": "Merge-Me-Test-User",
+          "type": "User"
+        },
+        "repo": {
+          "name": "merge-me-test",
+          "full_name": "Merge-Me-Test-User/merge-me-test",
+          "owner": {
+            "login": "Merge-Me-Test-User",
+            "type": "User"
+          },
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "Merge-Me-Test-User:master",
+        "ref": "master",
+        "sha": "c97fa52a39aee73230b98a5faea7f27cadb0acc4",
+        "user": {
+          "login": "Merge-Me-Test-User",
+          "type": "User"
+        },
+        "repo": {
+          "name": "merge-me-test",
+          "full_name": "Merge-Me-Test-User/merge-me-test",
+          "owner": {
+            "login": "Merge-Me-Test-User",
+            "type": "User"
+          },
+          "default_branch": "master"
+        }
+      },
+      "author_association": "MEMBER"
+    }
+  }
+}

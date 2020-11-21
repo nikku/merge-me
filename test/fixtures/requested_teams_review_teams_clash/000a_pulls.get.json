@@ -1,0 +1,80 @@
+{
+  "name": "pulls.get",
+  "type": "api-call",
+  "args": {
+    "owner": "merge-me-test-org",
+    "repo": "testtest-org",
+    "pull_number": 1
+  },
+  "result": {
+    "data": {
+      "rebaseable": true,
+      "mergeable": true,
+      "merged": false,
+      "draft": false,
+      "number": 1,
+      "state": "open",
+      "title": "Update README.md",
+      "user": {
+        "login": "nikku",
+        "type": "User"
+      },
+      "merge_commit_sha": "95c0d3cb1d9f780ae8bf8c9a1f32529061ff6b6f",
+      "assignees": [],
+      "requested_reviewers": [
+        {
+          "login": "waltaaa",
+          "type": "User"
+        }
+      ],
+      "requested_teams": [
+        {
+          "name": "dev",
+          "slug": "dev",
+          "privacy": "closed",
+          "permission": "pull"
+        }
+      ],
+      "labels": [],
+      "head": {
+        "label": "merge-me-test-org:nikku-patch-1",
+        "ref": "nikku-patch-1",
+        "sha": "a6e7a70e3150b7c6f87a7ec47da918eafd72b5ec",
+        "user": {
+          "login": "merge-me-test-org",
+          "type": "Organization"
+        },
+        "repo": {
+          "name": "testtest-org",
+          "full_name": "merge-me-test-org/testtest-org",
+          "owner": {
+            "login": "merge-me-test-org",
+            "type": "Organization"
+          },
+          "size": 5,
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "merge-me-test-org:master",
+        "ref": "master",
+        "sha": "3b5849c4f95ab6af5c664bc5a67fcea0bf7f7ecf",
+        "user": {
+          "login": "merge-me-test-org",
+          "type": "Organization"
+        },
+        "repo": {
+          "name": "testtest-org",
+          "full_name": "merge-me-test-org/testtest-org",
+          "owner": {
+            "login": "merge-me-test-org",
+            "type": "Organization"
+          },
+          "size": 5,
+          "default_branch": "master"
+        }
+      },
+      "author_association": "CONTRIBUTOR"
+    }
+  }
+}
