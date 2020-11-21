@@ -26,6 +26,7 @@ Consume as [GitHub app](https://github.com/apps/merge-me) or fork and deploy you
 
 Without [branch protection](https://help.github.com/articles/about-protected-branches/), the app ensures a pull request meets the following conditions before merging:
 
+* Pull request is not a draft
 * At least one status check exists
 * All status checks are `completed`
 * All status checks have the outcome `successful` or `neutral`
