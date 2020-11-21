@@ -4,8 +4,8 @@
   "args": {
     "owner": "nikku",
     "repo": "testtest",
-    "ref": "testtest:waltaaa-patch-1",
-    "state": "open"
+    "state": "open",
+    "head": "testtest:waltaaa-patch-1"
   },
   "result": {
     "data": []
