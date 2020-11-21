@@ -18,6 +18,7 @@ Consume as [GitHub app](https://github.com/apps/merge-me) or fork and deploy you
 * Zero configuration
 * Enforces [branch protection rules](https://help.github.com/articles/about-protected-branches/), if configured
 * Applies [sensible defaults](#merge-rules) in the absence of branch protection
+* Accounts for [review teams](#reviewteams), if configured
 * Merges using the _rebase_ strategy
 
 
