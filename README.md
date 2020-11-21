@@ -54,7 +54,7 @@ minApprovals: 2
 
 This property lists teams to account for when checking for approvals. Taking teams into account during the merge check requires the `members` app permission and is enabled for organizational repositories only.
 
-If `reviewTeams` is specified, the bot checks for approvals for each team involved in the PR. It deduces the effective teams to account for via the team memberships of existing and requested reviewers. The bot goes ahead to merge a PR only if all effective review teams have the required amount of `minApprovals`.
+If `reviewTeams` is specified, the bot checks for approvals for each team involved in the PR. It deduces the effective teams to account for via the team memberships of existing and requested reviewers. The bot merges a PR only if all effective review teams have the configured amount of `minApprovals`.
 
 ##### Example
 
