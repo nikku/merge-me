@@ -19,7 +19,7 @@ A GitHub app, built with [Probot](https://probot.github.io), that merges your pu
 * Enforces [branch protection rules](https://help.github.com/articles/about-protected-branches/), if configured
 * Applies [sensible defaults](#merge-rules) in the absence of branch protection
 * Accounts for [review teams](#reviewteams), if configured
-* Merges using the _rebase_ strategy
+* Merges using the _rebase_ (default) or _merge_ method
 
 
 ## Merge Rules
@@ -33,7 +33,7 @@ Without [branch protection](https://help.github.com/articles/about-protected-bra
 * At least one review approval exists
 * No review requests changes
 
-Rules may be overridden / fine tuned with [additional configuration](#configuration).
+Rules and merge method may be tuned with [additional configuration](#configuration).
 
 
 ## Configuration
@@ -48,6 +48,16 @@ This property specifies the number of approvals required to merge a PR. Defaults
 
 ```yml
 minApprovals: 2
+```
+
+#### `mergeMethod=rebase`
+
+This property specifies whether to use `rebase` (default) or `merge` as the merge method.
+
+##### Example
+
+```yml
+mergeMethod: 'merge'
 ```
 
 #### `reviewTeams`
