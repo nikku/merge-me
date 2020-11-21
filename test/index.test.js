@@ -82,6 +82,10 @@ describe('bot', function() {
     // error during merge
     it('should handle unexpected response errors', test('response_errors'));
 
+    // minReviews is <NaN>
+    // mergeMethod is <dont-care>
+    it('should handle config errors', test('config_errors'));
+
   });
 
 
