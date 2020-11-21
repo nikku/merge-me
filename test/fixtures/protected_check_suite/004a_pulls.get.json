@@ -1,0 +1,66 @@
+{
+  "name": "pulls.get",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest",
+    "pull_number": 24
+  },
+  "result": {
+    "data": {
+      "rebaseable": true,
+      "mergeable": true,
+      "merged": false,
+      "draft": false,
+      "number": 24,
+      "state": "open",
+      "title": "Update test.txt",
+      "user": {
+        "login": "waltaaa",
+        "type": "User"
+      },
+      "merge_commit_sha": "6681fc9fdc1914e3490e1d1be48cc0760c4cf3ed",
+      "assignees": [],
+      "requested_reviewers": [],
+      "requested_teams": [],
+      "labels": [],
+      "head": {
+        "label": "nikku:waltaaa-patch-1",
+        "ref": "waltaaa-patch-1",
+        "sha": "4b10a44fa7652f05c61bd18f7e5a7c7e451e093f",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "default_branch": "master"
+        }
+      },
+      "base": {
+        "label": "nikku:master",
+        "ref": "master",
+        "sha": "4f7b58a550a45d7a807f2cb0095946b03dc3d3f7",
+        "user": {
+          "login": "nikku",
+          "type": "User"
+        },
+        "repo": {
+          "name": "testtest",
+          "full_name": "nikku/testtest",
+          "owner": {
+            "login": "nikku",
+            "type": "User"
+          },
+          "default_branch": "master"
+        }
+      },
+      "author_association": "COLLABORATOR"
+    }
+  }
+}
