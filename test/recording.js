@@ -39,7 +39,7 @@ class Recording {
    * Trace log given message
    */
   trace(...args) {
-    this.app.log(...args);
+    this.app.log.trace(...args);
   }
 
   /**
