@@ -6,6 +6,12 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.11.0
+
+* `FIX`: correct cross-origin pull request check ([`d48ca873c`](https://github.com/nikku/merge-me/commit/d48ca873cc41f5f50e57f67e7d58d468b1f8708f))
+* `FIX`: fetch full PR details before executing merge checks ([`3a69f91cf`](https://github.com/nikku/merge-me/commit/3a69f91cfc0ecaaaa15f28a626b7d1124668b381))
+* `CHORE`: migrate to `probot@10`
+
 ## 0.10.0
 
 * `CHORE`: increase page size when fetching reviews
