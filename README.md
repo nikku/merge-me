@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/nikku/merge-me.svg?branch=master)](https://travis-ci.com/nikku/merge-me)
 [![Code coverage](https://img.shields.io/codecov/c/github/nikku/merge-me.svg)](https://codecov.io/gh/nikku/merge-me)
 
-A GitHub App built with [Probot](https://probot.github.io) that merges your pull requests once all required checks pass.
+A GitHub App that merges your pull requests once all required checks pass. 
 
 ![merge-me bot in action](./docs/screenshot.png)
 
@@ -24,7 +24,7 @@ Consume as [GitHub app](https://github.com/apps/merge-me) or fork and deploy you
 
 ## Merge Rules
 
-In the absence of [branch protection rules](https://help.github.com/articles/about-protected-branches/) the app ensures a pull request meets the following conditions before merging:
+Without [branch protection](https://help.github.com/articles/about-protected-branches/), the app ensures a pull request meets the following conditions before merging:
 
 * At least one status check exists
 * All status checks are `completed`
@@ -37,11 +37,11 @@ Rules may be overridden / fine tuned with [additional configuration](#configurat
 
 ## Configuration
 
-The bot can be configured by placing a `.github/merge-me.yml` file into your repository. 
+You configure the merge behavior by placing a `.github/merge-me.yml` file into your repository. 
 
 #### `minApprovals=1`
 
-The amount of approvals required in order to merge a PR. Defaults to `1`, will always be at least `1` for external contributions.
+This property specifies the number of approvals required to merge a PR. Defaults to `1`, will always be at least `1` for external contributions.
 
 ##### Example
 
@@ -51,11 +51,9 @@ minApprovals: 2
 
 #### `reviewTeams`
 
-Teams to account for when checking for approvals. This option is enabled for organizational repositories only and requires the `members` permission.
+This property lists teams to account for when checking for approvals. Taking teams into account during the merge check requires the `members` app permission and is enabled for organizational repositories only.
 
-If `reviewTeams` is specified the bot will check for approvals per team that is involved in the PR. To do this, it deduces the effective teams to account for from existing and requested reviewers and their team memberships.
-
-If any effective review team is missing the required amount of `minApprovals` merging of the PR is rejected.
+If `reviewTeams` is specified, the bot checks for approvals for each team involved in the PR. It deduces the effective teams to account for via the team memberships of existing and requested reviewers. The bot goes ahead to merge a PR only if all effective review teams have the required amount of `minApprovals`.
 
 ##### Example
 
@@ -73,7 +71,7 @@ This app works nicely with others:
 * [WIP](https://github.com/apps/wip) - prevents merging of branches that you tag as _work in progress_
 * [delete-merged-branch](https://github.com/apps/delete-merged-branch) - deletes the feature branch once merged
 
-Combine the apps as needed for a great merge flow.
+Combine the apps as needed for an excellent merge flow.
 
 
 ## Setup
