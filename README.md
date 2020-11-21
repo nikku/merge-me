@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/nikku/merge-me.svg?branch=master)](https://travis-ci.com/nikku/merge-me)
 [![Code coverage](https://img.shields.io/codecov/c/github/nikku/merge-me.svg)](https://codecov.io/gh/nikku/merge-me)
 
-A [Probot powered](https://probot.github.io/) GitHub bot that merges your pull requests once all required checks pass. 
+A [Probot powered](https://probot.github.io/) GitHub bot that merges your pull requests once all required checks pass.
 
 ![merge-me bot in action](./docs/screenshot.png)
 
@@ -19,7 +19,7 @@ Consume as [GitHub app](https://github.com/apps/merge-me) or fork and deploy you
 * Enforces [branch protection rules](https://help.github.com/articles/about-protected-branches/), if configured
 * Applies [sensible defaults](#merge-rules) in the absence of branch protection
 * Accounts for [review teams](#reviewteams), if configured
-* Merges using the _rebase_ strategy
+* Merges using the _rebase_ strategy, this is [configurable](#mergemethodrebase)
 
 
 ## Merge Rules
@@ -38,7 +38,7 @@ Rules may be overridden / fine tuned with [additional configuration](#configurat
 
 ## Configuration
 
-You configure the merge behavior by placing a `.github/merge-me.yml` file into your repository. 
+You configure the merge behavior by placing a `.github/merge-me.yml` file into your repository.
 
 #### `minApprovals=1`
 
@@ -48,6 +48,16 @@ This property specifies the number of approvals required to merge a PR. Defaults
 
 ```yml
 minApprovals: 2
+```
+
+#### `mergeMethod=rebase`
+
+This property specifies whether to use `rebase` (default) or `merge` as the merge method.
+
+##### Example
+
+```yml
+mergeMethod: 'merge'
 ```
 
 #### `reviewTeams`
