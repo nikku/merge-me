@@ -4,5 +4,5 @@ node_js:
   - 14
 
 script:
-  - npm run all
+  - LOG_LEVEL=trace npm run all
   - npx codecov
