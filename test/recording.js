@@ -33,8 +33,6 @@ class Recording {
   constructor(entries) {
     this.entries = entries;
     this.idx = 0;
-
-    this.debug = process.env.LOG_LEVEL == 'debug';
   }
 
   /**
@@ -74,11 +72,13 @@ class Recording {
       }
     };
 
-    const log = pino(pino.destination({
-      write: (...args) => {
-        console.log(...args);
-      }
-    }));
+    const log = pino({
+      prettyPrint: true,
+      level: process.env.LOG_LEVEL || 'warn',
+      destination: pino.destination({
+        write: console.log
+      })
+    });
 
     const app = this.app = new Probot({
       log,
