@@ -4,8 +4,8 @@
   "args": {
     "owner": "nikku",
     "repo": "testtest",
-    "ref": "testtest:master",
-    "state": "open"
+    "state": "open",
+    "head": "nikku:master"
   },
   "result": {
     "data": []
