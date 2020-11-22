@@ -10,7 +10,9 @@ A GitHub app, built with [Probot](https://probot.github.io), that merges your pu
 
 ## Installation
 
-[Install the app](https://github.com/apps/merge-me) or [run it yourself](#setup-and-run).
+[Install the app](https://github.com/apps/merge-me) from the GitHub apps directory. 
+
+Alternatively, [run it yourself](#setup-and-run) or [integrate it with an existing Probot](#integrate-with-an-existing-probot).
 
 
 ## Features
@@ -96,6 +98,28 @@ LOG_LEVEL=debug npm start
 
 # test the app
 LOG_LEVEL=debug npm test
+```
+
+
+## Integrate with an Existing Probot
+
+You can [combine this app with others](https://probot.github.io/docs/deployment/#combining-apps).
+
+```json
+{
+  "name": "my-probot-app",
+  "private": true,
+  "dependencies": {
+    "@nikku/merge-me": "^0.11.0",
+    "probot-settings": "probot/settings"
+  },
+  "scripts": {
+    "start": "probot run"
+  },
+  "probot": {
+    "apps": ["@nikku/merge-me", "probot-settings"]
+  }
+}
 ```
 
 
