@@ -6,6 +6,12 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.12.0
+
+* `FEAT`: make merge method configurable and support `merge` as well as `rebase`
+* `FEAT`: handle configuration errors gracefully
+* `CHORE`: improve debug logging
+
 ## 0.11.1
 
 * `FIX`: correct correlation of status updates to (local) pull requests ([`563b5cc0`](https://github.com/nikku/merge-me/commit/563b5cc02beb725c03435409a9345a64b7c71a93))
