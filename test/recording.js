@@ -145,7 +145,7 @@ class Recording {
       this.lastError = null;
 
       await this.app.receive({
-        name,
+        name: name.split('.')[0],
         payload
       });
 
