@@ -1,6 +1,6 @@
 # merge-me
 
-[![Build Status](https://travis-ci.com/nikku/merge-me.svg?branch=master)](https://travis-ci.com/nikku/merge-me)
+[![CI Status](https://img.shields.io/github/workflow/status/nikku/merge-me/ci)](https://github.com/nikku/merge-me/actions?query=workflow%3Aci)
 [![Code coverage](https://img.shields.io/codecov/c/github/nikku/merge-me.svg)](https://codecov.io/gh/nikku/merge-me)
 
 A GitHub app, built with [Probot](https://probot.github.io), that merges your pull requests once all required checks pass.
@@ -10,7 +10,7 @@ A GitHub app, built with [Probot](https://probot.github.io), that merges your pu
 
 ## Installation
 
-[Install the app](https://github.com/apps/merge-me) from the GitHub apps directory. 
+[Install the app](https://github.com/apps/merge-me) from the GitHub apps directory.
 
 Alternatively, [run it yourself](#setup-and-run) or [integrate it with an existing Probot](#integrate-with-an-existing-probot).
 
