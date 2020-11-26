@@ -1,8 +1,0 @@
-sudo: false
-language: node_js
-node_js:
-  - 14
-
-script:
-  - LOG_LEVEL=trace npm run all
-  - npx codecov
