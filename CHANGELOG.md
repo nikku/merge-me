@@ -6,6 +6,12 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.13.0
+
+* `FEAT`: make PR check completion more strict
+* `CHORE`: revert back to `probot@9`, soon `probot@11` app format
+* `CHORE`: migrate to `probot@10.19`
+
 ## 0.12.0
 
 * `FEAT`: make merge method configurable and support `merge` as well as `rebase`
