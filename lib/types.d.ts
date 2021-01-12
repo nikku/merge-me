@@ -59,6 +59,7 @@ export type Suite = {
       login: string;
     };
   };
+  pull_requests: unknown[];
 };
 
 export type PullRequest = {

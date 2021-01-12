@@ -8,12 +8,8 @@
   },
   "result": {
     "data": {
-      "total_count": 1,
-      "check_suites": [
-        {
-          "status": "queued"
-        }
-      ]
+      "total_count": 0,
+      "check_suites": []
     }
   }
 }

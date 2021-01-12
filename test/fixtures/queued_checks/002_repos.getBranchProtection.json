@@ -1,13 +1,14 @@
 {
-  "name": "pulls.listReviews",
+  "name": "repos.getBranchProtection",
   "type": "api-call",
   "args": {
     "owner": "nikku",
     "repo": "testtest-checks",
-    "pull_number": 1,
-    "per_page": 100
+    "branch": "master"
   },
   "result": {
-    "data": []
+    "error": {
+      "status": 404
+    }
   }
 }

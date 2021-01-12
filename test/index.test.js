@@ -26,7 +26,13 @@ describe('bot', function() {
     it('should handle check conclusions', test('unprotected_check_conclusions'));
 
 
-    it('should ignore queued checks', test('ignore_queued_checks'));
+    it('should consider queued checks', test('queued_checks'));
+
+
+    it('should ignore non-PR queued checks', test('non_pull_request_queued_checks'));
+
+
+    it('should consider non-PR failing checks', test('non_pull_request_failed_checks'));
 
 
     it('should handle missing branch', test('no_branch'));
