@@ -7,7 +7,8 @@
     "rootDir": ".",
     "strict": false,
     "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strictNullChecks": true
   },
   "include": [
     "lib"
