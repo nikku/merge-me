@@ -78,8 +78,6 @@ export type PullRequest = {
   }[];
   created_at: string;
   updated_at: string;
-  closed_at: string;
-  merged_at: string;
   requested_reviewers: {
     login: string;
   }[];
@@ -117,6 +115,6 @@ export type PullRequest = {
   };
   draft: boolean;
   merged: boolean;
-  mergeable: boolean;
-  rebaseable: boolean;
+  mergeable: boolean | null;
+  rebaseable: boolean | null;
 };
