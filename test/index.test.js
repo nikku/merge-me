@@ -92,6 +92,9 @@ describe('bot', function() {
     // mergeMethod is <dont-care>
     it('should handle config errors', test('config_errors'));
 
+
+    it('should handle merge error', test('merge_error'));
+
   });
 
 
