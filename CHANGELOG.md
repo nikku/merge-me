@@ -6,6 +6,11 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.14.0
+
+* `CHORE`: debug log with more context
+* `CHORE`: bump dependencies
+
 ## 0.13.0
 
 * `FEAT`: make PR check completion more strict
