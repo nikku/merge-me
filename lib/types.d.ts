@@ -6,7 +6,11 @@ import {
 
 export type Octokit = InstanceType<typeof ProbotOctokit>;
 
-export { Context, Octokit, Probot };
+export {
+  Context,
+  Octokit,
+  Probot
+};
 
 export type Review = {
   id: number;
@@ -51,15 +55,15 @@ export type Status = {
 export type Suite = {
   id: number;
   head_sha: string;
-  status: string;
-  conclusion: string;
+  status: string | null;
+  conclusion: string | null;
   repository: {
     name: string;
     owner: {
       login: string;
-    };
+    } | null;
   };
-  pull_requests: unknown[];
+  pull_requests: { number: number }[] | null;
 };
 
 export type PullRequest = {
