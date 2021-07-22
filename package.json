@@ -46,5 +46,10 @@
       ".env",
       "**/*.js"
     ]
-  }
+  },
+  "files": [
+    "lib",
+    "app.yml",
+    "index.js"
+  ]
 }
