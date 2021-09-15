@@ -7,5 +7,4 @@ tmp
 .env.example
 .eslintrc
 .eslintignore
-.travis.yml
 tsconfig.json
