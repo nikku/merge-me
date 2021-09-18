@@ -1,6 +1,6 @@
 # merge-me
 
-[![CI Status](https://img.shields.io/github/workflow/status/nikku/merge-me/ci)](https://github.com/nikku/merge-me/actions?query=workflow%3Aci)
+[![ci](https://github.com/nikku/merge-me/actions/workflows/CI.yml/badge.svg)](https://github.com/nikku/merge-me/actions/workflows/CI.yml)
 [![Code coverage](https://img.shields.io/codecov/c/github/nikku/merge-me.svg)](https://codecov.io/gh/nikku/merge-me)
 
 A GitHub app, built with [Probot](https://probot.github.io), that merges your pull requests once all required checks pass.
