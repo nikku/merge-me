@@ -6,6 +6,11 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.14.1
+
+* `CHORE`: log full review, status and checks details on `LOG_LEVEL=trace`
+* `CHORE`: log full repository context when finding PR for status on `LOG_LEVEL=debug`
+
 ## 0.14.0
 
 * `CHORE`: debug log with more context
