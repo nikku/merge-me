@@ -20,7 +20,10 @@
             {
               "number": 1
             }
-          ]
+          ],
+          "app": {
+            "name": "GitHub Actions"
+          }
         }
       ]
     }

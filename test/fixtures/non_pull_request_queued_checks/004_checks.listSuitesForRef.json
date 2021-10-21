@@ -15,7 +15,10 @@
           "head_sha": "ca7142df376bebb6edcc0c156ca6897d39f468e2",
           "status": "queued",
           "latest_check_runs_count": 0,
-          "pull_requests": []
+          "pull_requests": [],
+          "app": {
+            "name": "GitHub Actions"
+          }
         }
       ]
     }

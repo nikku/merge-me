@@ -1,0 +1,22 @@
+{
+  "name": "pulls.listReviews",
+  "type": "api-call",
+  "args": {
+    "owner": "nikku",
+    "repo": "testtest-checks",
+    "pull_number": 1,
+    "per_page": 100
+  },
+  "result": {
+    "data": [
+      {
+        "user": {
+          "login": "nikku"
+        },
+        "state": "APPROVED",
+        "author_association": "OWNER",
+        "commit_id": "ca7142df376bebb6edcc0c156ca6897d39f468e2"
+      }
+    ]
+  }
+}

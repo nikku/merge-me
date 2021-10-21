@@ -26,6 +26,9 @@ describe('bot', function() {
     it('should handle check conclusions', test('unprotected_check_conclusions'));
 
 
+    it('should ignore Dependabot', test('unprotected_check_ignore_dependabot'));
+
+
     it('should consider queued checks', test('queued_checks'));
 
 
