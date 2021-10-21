@@ -6,6 +6,12 @@ All notable changes to [merge-me](https://github.com/nikku/merge-me) are documen
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.14.2
+
+* `FIX`: ignore queued Dependabot checks that never run ([#22](https://github.com/nikku/merge-me/pull/22))
+* `DEPS`: bump development dependencies
+* `DEPS`: patch bump dependencies (`npm audit fix`)
+
 ## 0.14.1
 
 * `CHORE`: log full review, status and checks details on `LOG_LEVEL=trace`
