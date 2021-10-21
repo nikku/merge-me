@@ -59,6 +59,9 @@ export type Suite = {
       login: string;
     };
   };
+  app: {
+    name: string;
+  };
   pull_requests: unknown[];
 };
 

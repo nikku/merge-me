@@ -16,7 +16,10 @@
           "status": "completed",
           "conclusion": "failure",
           "latest_check_runs_count": 1,
-          "pull_requests": []
+          "pull_requests": [],
+          "app": {
+            "name": "GitHub Actions"
+          }
         }
       ]
     }
